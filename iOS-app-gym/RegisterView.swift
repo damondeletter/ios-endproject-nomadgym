@@ -52,7 +52,7 @@ struct RegisterView: View {
                     .font(.system(size: 40, weight: .bold,design: .rounded))
                     .foregroundColor(buttonColor)
                 ZStack(alignment: .leading) {
-                    Text("This is Register")
+                    Text("Join our team now")
                     
                         .font(.system(size: 17, weight: .bold,design: .rounded))
                         .mask(Rectangle().offset(x: writing ? 0 : -150))
@@ -66,6 +66,23 @@ struct RegisterView: View {
                         .offset(x: movingCursor ? 148 : 0)
                         .offset(y:-185)
                 }
+                HStack{
+                    TextField("",text: $email)
+                        .textFieldStyle(.plain)
+                    
+                        .placeholder(when: email.isEmpty) {
+                            Text("Email")
+                                .bold()
+                                .foregroundColor(buttonColor)
+                        }
+                    Image(systemName: "envelope")
+                }
+                
+                Rectangle()
+                    .frame(width: 350, height: 1)
+                
+                
+                
                 HStack{
                     TextField("",text: $email)
                         .textFieldStyle(.plain)

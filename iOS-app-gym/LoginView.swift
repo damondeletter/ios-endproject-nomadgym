@@ -48,11 +48,11 @@ struct LoginView: View {
             VStack(spacing: 20) {
                 
                 
-                Text("Welcome").offset(y:-175)
+                Text("Welcome back").offset(y:-175)
                     .font(.system(size: 40, weight: .bold,design: .rounded))
                     .foregroundColor(buttonColor)
                 ZStack(alignment: .leading) {
-                    Text("This is NomadGym")
+                    Text("Continue the grind")
                     
                         .font(.system(size: 17, weight: .bold,design: .rounded))
                         .mask(Rectangle().offset(x: writing ? 0 : -150))
@@ -97,7 +97,7 @@ struct LoginView: View {
                 Button {
                     register()
                 } label: {
-                    Text("Sign up")
+                    Text("Log in")
                         .bold()
                         .frame(width: 200, height: 40)
                         .background {

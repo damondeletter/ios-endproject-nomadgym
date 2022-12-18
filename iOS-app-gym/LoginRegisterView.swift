@@ -12,7 +12,7 @@ struct LoginRegisterView: View {
     
     @State private var userIsLoggedIn = false
     @State var LoginPicked = false
-    
+    let buttonColor = Color.hexColour(hexValue: 0x6715f9)
     var body: some View {
         if userIsLoggedIn {
             OverviewView()
@@ -21,23 +21,35 @@ struct LoginRegisterView: View {
                 content
                 HStack {
                     Button{
+                        LoginPicked = true
                     } label: {
                         Text("Login")
-                    }.offset(x:-70, y: 370)
+                            .foregroundColor(buttonColor)
+                        
+                    
+                            
+                    }.offset(x:-70, y: 355)
                     
                     Button{
-                        
+                        LoginPicked = false
                     } label: {
                         Text("Sign up")
-                    }.offset(x:70, y: 370)
+                            .foregroundColor(buttonColor)
+                    }.offset(x:70, y: 355)
                 }.frame(height: 1)
+                
+                if(LoginPicked) {
+                    Image(systemName:"hand.point.up").offset(x:-100, y: 380)
+                } else {
+                    Image(systemName:"hand.point.up").offset(x:100, y: 380)
+                }
             }.ignoresSafeArea()
             
         }
     }
     var content : some View {
         VStack {
-            if LoginPicked {
+            if !LoginPicked {
                 RegisterView()
             } else {
                 LoginView()
