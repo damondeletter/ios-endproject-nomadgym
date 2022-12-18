@@ -11,7 +11,8 @@ import Firebase
 struct LoginRegisterView: View {
     
     @State private var userIsLoggedIn = false
-    @State var LoginPicked = false
+    @State var LoginPicked = true
+    
     let buttonColor = Color.hexColour(hexValue: 0x6715f9)
     var body: some View {
         if userIsLoggedIn {
@@ -26,8 +27,8 @@ struct LoginRegisterView: View {
                         Text("Login")
                             .foregroundColor(buttonColor)
                         
-                    
-                            
+                        
+                        
                     }.offset(x:-70, y: 355)
                     
                     Button{
@@ -44,8 +45,8 @@ struct LoginRegisterView: View {
                     Image(systemName:"hand.point.up").offset(x:100, y: 380)
                 }
             }.ignoresSafeArea()
-            
         }
+        
     }
     var content : some View {
         VStack {
@@ -60,6 +61,7 @@ struct LoginRegisterView: View {
 }
 
 struct LoginRegisterView_Previews: PreviewProvider {
+    
     static var previews: some View {
         LoginRegisterView()
     }

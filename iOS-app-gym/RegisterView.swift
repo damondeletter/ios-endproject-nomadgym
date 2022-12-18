@@ -11,6 +11,8 @@ import Firebase
 struct RegisterView: View {
     @State private var email = ""
     @State private var password = ""
+    @State private var firstName = ""
+    @State private var lastName = ""
     @State var text : String = ""
     let welcomeText : String = "Welcome to nomadgym"
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
@@ -84,19 +86,35 @@ struct RegisterView: View {
                 
                 
                 HStack{
-                    TextField("",text: $email)
-                        .textFieldStyle(.plain)
+                    TextField("",text: $firstName)
+                        .textFieldStyle(.plain).frame(width: 90)
                     
-                        .placeholder(when: email.isEmpty) {
-                            Text("Email")
+                        .placeholder(when: firstName.isEmpty) {
+                            Text("Firstname")
                                 .bold()
                                 .foregroundColor(buttonColor)
                         }
-                    Image(systemName: "envelope")
+                        
+                    
+                    Divider().frame(height: 20)
+                    
+                        TextField("",text: $lastName)
+                        .textFieldStyle(.plain)
+                    
+                        .placeholder(when: lastName.isEmpty) {
+                            Text("LastName")
+                                .bold()
+                                .foregroundColor(buttonColor)
+                        }
+                    Image(systemName: "person")
+                }
+                HStack {
+                    Rectangle()
+                        .frame(width: 95, height: 1)
+                    Rectangle()
+                        .frame(width: 240, height: 1)
                 }
                 
-                Rectangle()
-                    .frame(width: 350, height: 1)
                 
                 HStack{
                     SecureField("", text: $password)
@@ -125,14 +143,7 @@ struct RegisterView: View {
                 }
                 .padding(.top)
                 .offset(y: 100)
-                Button {
-                    login()
-                } label: {
-                    Text("I'm already a member! Login")
-                        .foregroundColor(buttonColor)
-                }
-                .padding(.top)
-                .offset(y: 100)
+                
                 
             }
             .frame(width: 350)
@@ -148,22 +159,30 @@ struct RegisterView: View {
             
         }.ignoresSafeArea()
     }
-    func login () {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-        }
 
-    }
     
     func register() {
         Auth.auth().createUser(withEmail: email, password: password){ result, error in
             if error != nil {
                 print(error!.localizedDescription)
             }
+            Auth.auth().signIn(withEmail: self.email, password: self.password)
+            self.AddUserInformationToFirebase()
+            
             
         }
+    }
+    private func AddUserInformationToFirebase() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let userData = ["fname": self.firstName, "lname" : self.lastName, "email":self.email, "uid":uid]
+        Firestore.firestore().collection("users")
+            .document(uid).setData(userData) { error in
+                if let error = error {
+                    print(error)
+                    return
+                    
+                }
+            }
     }
     
 }

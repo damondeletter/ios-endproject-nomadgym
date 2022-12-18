@@ -9,14 +9,15 @@ import SwiftUI
 import Firebase
 
 struct ContentView: View {
-    @State private var UserIsCurrentyLoggedOut : Bool = false
+    @State private var UserIsCurrentlyLoggedOut : Bool = false
     
     var body : some View {
         NavigationView{
-            if self.UserIsCurrentyLoggedOut {
-                OverviewView()
-            } else {
+            if Auth.auth().currentUser?.uid == nil {
+            //if !self.UserIsCurrentlyLoggedOut {
                 LoginRegisterView()
+            } else {
+                OverviewView()
             }
         }
     }

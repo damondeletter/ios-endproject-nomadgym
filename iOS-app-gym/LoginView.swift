@@ -20,6 +20,8 @@ struct LoginView: View {
     @State private var movingCursor = false
     @State private var blinkingCursor = false
     @State private var userIsLoggedIn = false
+    
+    
     var body: some View {
         
         ZStack {
@@ -95,7 +97,8 @@ struct LoginView: View {
                     .frame(width: 350, height: 1)
                 
                 Button {
-                    register()
+                    login()
+                    
                 } label: {
                     Text("Log in")
                         .bold()
@@ -108,14 +111,7 @@ struct LoginView: View {
                 }
                 .padding(.top)
                 .offset(y: 100)
-                Button {
-                    login()
-                } label: {
-                    Text("I'm already a member! Login")
-                        .foregroundColor(buttonColor)
-                }
-                .padding(.top)
-                .offset(y: 100)
+                
                 
             }
             .frame(width: 350)
@@ -130,24 +126,22 @@ struct LoginView: View {
             
             
         }.ignoresSafeArea()
+            .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
+                OverviewView()
+            }
     }
     func login () {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error != nil {
                 print(error!.localizedDescription)
             }
+            print("gelukt")
+            print(Auth.auth().currentUser?.email ?? "Niet bestaande")
+            userIsLoggedIn = true
         }
 
     }
-    
-    func register() {
-        Auth.auth().createUser(withEmail: email, password: password){ result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-            
-        }
-    }
+
     
 }
 

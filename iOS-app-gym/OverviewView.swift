@@ -9,22 +9,32 @@ import SwiftUI
 import Firebase
 
 struct OverviewView: View {
+    @State private var userIsLoggedOut = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-        
-        Button {
-           logout()
-        }label: {
-            Text("Test")
+        VStack {
+            Text("INGELOGD")
+            
+            
+            Button {
+               logout()
+            }label: {
+                Text("Test")
+            }
         }
+        .fullScreenCover(isPresented: $userIsLoggedOut, onDismiss: nil) {
+            LoginRegisterView()
+        }
+        
     }
     func logout() {
         try? Auth.auth().signOut()
+        userIsLoggedOut = true
         
     }
 }
 
 struct OverviewView_Previews: PreviewProvider {
+    
     static var previews: some View {
         OverviewView()
     }
