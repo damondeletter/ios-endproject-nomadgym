@@ -21,8 +21,14 @@ struct LoginView: View {
     @State private var blinkingCursor = false
     @State private var userIsLoggedIn = false
     
+    @State private var alert = false
+    @State private var error = ""
     
     var body: some View {
+        if self.alert {
+            //todo fix alert
+        }
+        
         
         ZStack {
             backgroundlower
@@ -129,15 +135,27 @@ struct LoginView: View {
             .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
                 OverviewView()
             }
+        
+        
     }
+    func verify () {
+        
+            self.error = "Please enter a valid email and password"
+            self.alert.toggle()
+        
+    }
+    
     func login () {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
             if error != nil {
                 print(error!.localizedDescription)
+                verify()
+            } else {
+                
+                print("gelukt")
+                print(Auth.auth().currentUser?.email ?? "Niet bestaande")
+                userIsLoggedIn = true
             }
-            print("gelukt")
-            print(Auth.auth().currentUser?.email ?? "Niet bestaande")
-            userIsLoggedIn = true
         }
 
     }

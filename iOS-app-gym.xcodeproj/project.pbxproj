@@ -19,7 +19,6 @@
 		82C7BB7B294F599C00B25CC2 /* LoginRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB7A294F599C00B25CC2 /* LoginRegisterView.swift */; };
 		82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB7E294F6F6600B25CC2 /* LoginView.swift */; };
 		82C7BB81294F73A000B25CC2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB80294F73A000B25CC2 /* RegisterView.swift */; };
-		82C7BB83294FADDF00B25CC2 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB82294FADDF00B25CC2 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		82C7BB7A294F599C00B25CC2 /* LoginRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRegisterView.swift; sourceTree = "<group>"; };
 		82C7BB7E294F6F6600B25CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82C7BB80294F73A000B25CC2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
-		82C7BB82294FADDF00B25CC2 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +77,6 @@
 				82C7BB7A294F599C00B25CC2 /* LoginRegisterView.swift */,
 				82C7BB7E294F6F6600B25CC2 /* LoginView.swift */,
 				82C7BB80294F73A000B25CC2 /* RegisterView.swift */,
-				82C7BB82294FADDF00B25CC2 /* TestView.swift */,
 			);
 			path = "iOS-app-gym";
 			sourceTree = "<group>";
@@ -182,7 +179,6 @@
 				82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */,
 				82C7BB70294F2A8F00B25CC2 /* Extensions.swift in Sources */,
 				82C7BB81294F73A000B25CC2 /* RegisterView.swift in Sources */,
-				82C7BB83294FADDF00B25CC2 /* TestView.swift in Sources */,
 				82C7BB61294F267100B25CC2 /* iOS_app_gymApp.swift in Sources */,
 				82C7BB79294F56E400B25CC2 /* OverviewView.swift in Sources */,
 				82C7BB7B294F599C00B25CC2 /* LoginRegisterView.swift in Sources */,
