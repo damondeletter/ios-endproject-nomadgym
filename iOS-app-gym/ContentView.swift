@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+    @State private var UserIsCurrentyLoggedOut : Bool = false
+    
+    var body : some View {
+        NavigationView{
+            if self.UserIsCurrentyLoggedOut {
+                OverviewView()
+            } else {
+                LoginRegisterView()
+            }
         }
-        .padding()
     }
 }
 

@@ -6,9 +6,13 @@
 //
 
 import SwiftUI
-
+import Firebase
 @main
 struct iOS_app_gymApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
