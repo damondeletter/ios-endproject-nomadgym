@@ -18,12 +18,18 @@ struct RegisterView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     let buttonColor = Color.hexColour(hexValue: 0x6715f9)
     
+    @State private var alert = false
+    @State private var error = ""
+    
     @State private var writing = false
     @State private var movingCursor = false
     @State private var blinkingCursor = false
     @State private var userIsLoggedIn = false
     var body: some View {
-        
+        if self.alert {
+            //todo fix alert
+            
+        }
         ZStack {
             backgroundlower
             Path { path in
@@ -71,7 +77,7 @@ struct RegisterView: View {
                 HStack{
                     TextField("",text: $email)
                         .textFieldStyle(.plain)
-                    
+                        .autocorrectionDisabled()
                         .placeholder(when: email.isEmpty) {
                             Text("Email")
                                 .bold()
@@ -88,7 +94,7 @@ struct RegisterView: View {
                 HStack{
                     TextField("",text: $firstName)
                         .textFieldStyle(.plain).frame(width: 90)
-                    
+                        .autocorrectionDisabled()
                         .placeholder(when: firstName.isEmpty) {
                             Text("Firstname")
                                 .bold()
@@ -100,7 +106,7 @@ struct RegisterView: View {
                     
                         TextField("",text: $lastName)
                         .textFieldStyle(.plain)
-                    
+                        .autocorrectionDisabled()
                         .placeholder(when: lastName.isEmpty) {
                             Text("LastName")
                                 .bold()
@@ -118,6 +124,7 @@ struct RegisterView: View {
                 
                 HStack{
                     SecureField("", text: $password)
+                        .autocorrectionDisabled()
                         .textFieldStyle(.plain)
                         .placeholder(when: password.isEmpty) {
                             Text("Password").bold()
@@ -143,7 +150,10 @@ struct RegisterView: View {
                 }
                 .padding(.top)
                 .offset(y: 100)
-                
+                .alert(error, isPresented: $alert, actions: {}) // 4
+                .keyboardShortcut(.defaultAction).onSubmit {
+                    register()
+                }
                 
             }
             .frame(width: 350)
@@ -158,17 +168,25 @@ struct RegisterView: View {
             
             
         }.ignoresSafeArea()
+            .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
+                OverviewView()
+            }
     }
+
 
     
     func register() {
         Auth.auth().createUser(withEmail: email, password: password){ result, error in
             if error != nil {
-                print(error!.localizedDescription)
+                self.error = error!.localizedDescription
+                self.alert = true
+            } else {
+                Auth.auth().signIn(withEmail: self.email, password: self.password)
+                self.AddUserInformationToFirebase()
+                self.alert = false
+                self.userIsLoggedIn = true
+                
             }
-            Auth.auth().signIn(withEmail: self.email, password: self.password)
-            self.AddUserInformationToFirebase()
-            
             
         }
     }

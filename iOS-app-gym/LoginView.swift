@@ -23,6 +23,10 @@ struct LoginView: View {
     
     @State private var alert = false
     @State private var error = ""
+
+    
+    @FocusState private var focusedField : Bool
+    
     
     var body: some View {
         if self.alert {
@@ -77,8 +81,9 @@ struct LoginView: View {
                 HStack{
                     TextField("",text: $email)
                         .textFieldStyle(.plain)
-                    
-                        .placeholder(when: email.isEmpty) {
+                        .autocorrectionDisabled()
+                        .focused($focusedField)
+                        .keyboardShortcut(.tab)                        .placeholder(when: email.isEmpty) {
                             Text("Email")
                                 .bold()
                                 .foregroundColor(buttonColor)
@@ -91,7 +96,9 @@ struct LoginView: View {
                 
                 HStack{
                     SecureField("", text: $password)
+                        .autocorrectionDisabled()
                         .textFieldStyle(.plain)
+                        .keyboardShortcut(.tab)
                         .placeholder(when: password.isEmpty) {
                             Text("Password").bold()
                                 .foregroundColor(buttonColor)
@@ -117,6 +124,10 @@ struct LoginView: View {
                 }
                 .padding(.top)
                 .offset(y: 100)
+                .alert(error, isPresented: $alert, actions: {})
+                .keyboardShortcut(.defaultAction).keyboardShortcut(.tab).onSubmit {
+                    login()
+                }
                 
                 
             }
@@ -135,26 +146,40 @@ struct LoginView: View {
             .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
                 OverviewView()
             }
-        
-        
-    }
-    func verify () {
-        
-            self.error = "Please enter a valid email and password"
-            self.alert.toggle()
+            .onAppear {
+                focusedField = true
+            }
         
     }
     
     func login () {
         Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            
+            
             if error != nil {
+                var errormessages = ["user-not-found": "Please enter valid credentials","network-request-failed": "There is a network error, please try again later", "auth/wrong-password": "Email and password are not valid. Also,they cannot be empty"]
                 print(error!.localizedDescription)
-                verify()
-            } else {
+                if error!.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
+                    self.error = errormessages["user-not-found"]!
+                } else if(error!.localizedDescription == "A network error (such as timeout, interrupted connection or unreachable host) has occurred."){
+                    self.error = errormessages["network-request-failed"]!
+                    
+                } else if(error!.localizedDescription == "The password is invalid or the user does not have a password.") {
+                    self.error = errormessages["auth/wrong-password"]!
+                }
                 
-                print("gelukt")
-                print(Auth.auth().currentUser?.email ?? "Niet bestaande")
+                else {
+                    self.error = error!.localizedDescription
+                }
+                
+                self.alert = true
+                if(email.isEmpty) {
+                    focusedField = true
+                }
+            } else {
                 userIsLoggedIn = true
+               
+                
             }
         }
 

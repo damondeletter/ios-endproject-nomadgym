@@ -67,6 +67,7 @@
 		82C7BB5F294F267100B25CC2 /* iOS-app-gym */ = {
 			isa = PBXGroup;
 			children = (
+				82CDC54229505E75009FAB28 /* Addons */,
 				82C7BB6E294F2A7800B25CC2 /* Extensions */,
 				82C7BB60294F267100B25CC2 /* iOS_app_gymApp.swift */,
 				82C7BB62294F267100B25CC2 /* ContentView.swift */,
@@ -95,6 +96,13 @@
 				82C7BB6F294F2A8F00B25CC2 /* Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		82CDC54229505E75009FAB28 /* Addons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Addons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
