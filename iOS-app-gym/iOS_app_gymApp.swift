@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 @main
 struct iOS_app_gymApp: App {
+    @StateObject var viewModel = AuthViewModel()
     
     init() {
         FirebaseApp.configure()
@@ -16,6 +17,7 @@ struct iOS_app_gymApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }

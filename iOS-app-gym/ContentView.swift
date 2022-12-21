@@ -10,11 +10,11 @@ import Firebase
 
 struct ContentView: View {
     @State private var UserIsCurrentlyLoggedOut : Bool = false
+    @EnvironmentObject var viewModel : AuthViewModel
     
     var body : some View {
         NavigationView{
-            if Auth.auth().currentUser?.uid == nil {
-            //if !self.UserIsCurrentlyLoggedOut {
+            if viewModel.userSession == nil {
                 LoginRegisterView()
             } else {
                 OverviewView()

@@ -27,8 +27,6 @@ struct LoginRegisterView: View {
                         Text("Login")
                             .foregroundColor(buttonColor)
                         
-                        
-                        
                     }.offset(x:-70, y: 355)
                     
                     Button{
