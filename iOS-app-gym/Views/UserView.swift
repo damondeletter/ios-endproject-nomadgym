@@ -15,6 +15,7 @@ struct UserView: View {
     @State private var selectedImage : UIImage?
     @State private var profileImage : KFImage?
     @State private var isShowingConfirmation = false
+    @State var refresh: Bool = false
     @EnvironmentObject var viewModel : AuthViewModel
     var body: some View {
         ZStack {
@@ -88,6 +89,10 @@ struct UserView: View {
         viewModel.uploadProfilePicture(selectedImage)
         print("Versturen begonnen")
         profileImage = KFImage(URL(string: viewModel.userInCurrentSession!.profileImageUrl))
+        update()
+    }
+    func update() {
+       refresh.toggle()
     }
 
 }
