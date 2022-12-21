@@ -169,7 +169,7 @@ struct RegisterView: View {
             
         }.ignoresSafeArea()
             .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
-                OverviewView()
+                TabBarView()
             }
     }
 
@@ -192,7 +192,7 @@ struct RegisterView: View {
     }
     private func AddUserInformationToFirebase() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        let userData = ["fname": self.firstName, "lname" : self.lastName, "email":self.email, "profileImageUrl": "", "uid":uid]
+        let userData = ["fname": self.firstName, "lname" : self.lastName, "email":self.email, "profileImageUrl": ""]
         Firestore.firestore().collection("users")
             .document(uid).setData(userData) { error in
                 if let error = error {

@@ -144,7 +144,7 @@ struct LoginView: View {
             
         }.ignoresSafeArea()
             .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
-                OverviewView()
+                TabBarView()
             }
             .onAppear {
                 focusedField = true
