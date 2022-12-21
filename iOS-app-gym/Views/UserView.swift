@@ -23,13 +23,14 @@ struct UserView: View {
                     Button {
                         showImagePicker.toggle()
                     }label: {
-                        if let profileImage = profileImage {
-                            profileImage
+                         if viewModel.userInCurrentSession?.profileImageUrl != "" {
+                            KFImage(URL(string: viewModel.userInCurrentSession!.profileImageUrl))
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 180, height: 180)
                                 .clipShape(Circle())
-                        } else {
+                        }
+                        else {
                             Image("profilepicture")
                                 .resizable()
                                 .scaledToFill()
