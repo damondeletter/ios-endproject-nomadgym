@@ -25,6 +25,9 @@
 		82862D8929535DA60013275F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 82862D8829535DA60013275F /* Kingfisher */; };
 		829DA0322952217400CED4DE /* cup_loader.riv in Resources */ = {isa = PBXBuildFile; fileRef = 829DA0312952217400CED4DE /* cup_loader.riv */; };
 		829DA0362952285300CED4DE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 829DA0352952285300CED4DE /* Lottie */; };
+		82C147D92954495E00050B8C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147D82954495E00050B8C /* InfoView.swift */; };
+		82C147DB295449AA00050B8C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DA295449AA00050B8C /* HistoryView.swift */; };
+		82C147DD29548CB500050B8C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DC29548CB500050B8C /* ViewModel.swift */; };
 		82C2F12C295368960009F896 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2F12B295368960009F896 /* WorkoutView.swift */; };
 		82C7BB61294F267100B25CC2 /* iOS_app_gymApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB60294F267100B25CC2 /* iOS_app_gymApp.swift */; };
 		82C7BB63294F267100B25CC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB62294F267100B25CC2 /* ContentView.swift */; };
@@ -55,6 +58,9 @@
 		82862D83295347640013275F /* TabEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabEnum.swift; sourceTree = "<group>"; };
 		82862D8529534D550013275F /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		829DA0312952217400CED4DE /* cup_loader.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = cup_loader.riv; sourceTree = "<group>"; };
+		82C147D82954495E00050B8C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		82C147DA295449AA00050B8C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		82C147DC29548CB500050B8C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		82C2F12B295368960009F896 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		82C7BB5D294F267100B25CC2 /* iOS-app-gym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-app-gym.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C7BB60294F267100B25CC2 /* iOS_app_gymApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_app_gymApp.swift; sourceTree = "<group>"; };
@@ -180,9 +186,10 @@
 				82C7BB7A294F599C00B25CC2 /* LoginRegisterView.swift */,
 				82C7BB7E294F6F6600B25CC2 /* LoginView.swift */,
 				82C7BB80294F73A000B25CC2 /* RegisterView.swift */,
-				82CDC55D2950C348009FAB28 /* icons.riv */,
 				82862D62295300C50013275F /* UserView.swift */,
 				82C2F12B295368960009F896 /* WorkoutView.swift */,
+				82C147D82954495E00050B8C /* InfoView.swift */,
+				82C147DA295449AA00050B8C /* HistoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +209,7 @@
 			children = (
 				82CDC54C29506E76009FAB28 /* InfoBlock.swift */,
 				82862D67295305950013275F /* User.swift */,
+				82C147DC29548CB500050B8C /* ViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +226,7 @@
 		82CDC5572950C2E0009FAB28 /* Rive */ = {
 			isa = PBXGroup;
 			children = (
+				82CDC55D2950C348009FAB28 /* icons.riv */,
 				82CDC55F2950C348009FAB28 /* house.riv */,
 				829DA0312952217400CED4DE /* cup_loader.riv */,
 				8215B2912950CCF700326055 /* animated-icons.riv */,
@@ -320,9 +329,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				82C2F12C295368960009F896 /* WorkoutView.swift in Sources */,
+				82C147DB295449AA00050B8C /* HistoryView.swift in Sources */,
 				82862D84295347640013275F /* TabEnum.swift in Sources */,
 				82C7BB63294F267100B25CC2 /* ContentView.swift in Sources */,
 				82CDC54829506DF4009FAB28 /* ExploreHorizontalCard.swift in Sources */,
+				82C147DD29548CB500050B8C /* ViewModel.swift in Sources */,
 				82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */,
 				82862D662953056D0013275F /* DataManager.swift in Sources */,
 				82C7BB70294F2A8F00B25CC2 /* Extensions.swift in Sources */,
@@ -334,6 +345,7 @@
 				82862D68295305950013275F /* User.swift in Sources */,
 				82CDC54D29506E76009FAB28 /* InfoBlock.swift in Sources */,
 				82CDC54F29506F23009FAB28 /* InfoItem.swift in Sources */,
+				82C147D92954495E00050B8C /* InfoView.swift in Sources */,
 				82862D6C295313EC0013275F /* ImageSelectorController.swift in Sources */,
 				82862D77295335740013275F /* UserService.swift in Sources */,
 				82C7BB79294F56E400B25CC2 /* OverviewView.swift in Sources */,

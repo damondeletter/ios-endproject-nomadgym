@@ -10,20 +10,19 @@ import SwiftUI
 struct InfoItem: View {
     var namespace: Namespace.ID
     @Binding var show: Bool
-    var infoblock: InfoBlock
     
     var body: some View {
         VStack{
             Spacer()
             VStack(alignment: .leading, spacing:12)  {
-                Text(infoblock.title)
+                Text("tijdelijk")
                     .font(.largeTitle)
                     .matchedGeometryEffect(id: "title", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(infoblock.length.uppercased())
+                Text("tijdelijk")
                     .font(.footnote.weight(.semibold))
                     .matchedGeometryEffect(id: "subtitle", in: namespace)
-                Text(infoblock.description)
+                Text("tijdelijk")
                     .font(.footnote)
                     .matchedGeometryEffect(id: "text", in: namespace)
             }
@@ -51,6 +50,6 @@ struct InfoItem_Previews: PreviewProvider {
     @Namespace static var namespace
   
     static var previews: some View {
-        InfoItem(namespace: namespace,show: .constant(true), infoblock: infoblocks[0])
+        InfoItem(namespace: namespace,show: .constant(true))
     }
 }

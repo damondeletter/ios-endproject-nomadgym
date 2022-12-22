@@ -193,3 +193,5 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
     }
 }
+
+//https://stackoverflow.com/questions/73745850/how-to-draw-a-curve-path-after-straight-lines-in-swiftui

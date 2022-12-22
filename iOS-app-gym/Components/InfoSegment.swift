@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoSegment: View {
     var namespace : Namespace.ID
     @Binding var show : Bool
-    var infoblock : InfoBlock
+  
     var body: some View {
         ZStack {
             ScrollView {
@@ -99,7 +99,7 @@ struct InfoSegment_Previews: PreviewProvider {
     @Namespace static var namespace
     
     static var previews: some View {
-        InfoSegment(namespace: namespace, show: .constant(true), infoblock: infoblocks[0])
+        InfoSegment(namespace: namespace, show: .constant(true))
     }
 }
 

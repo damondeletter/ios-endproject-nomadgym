@@ -1,13 +1,13 @@
 //
-//  WorkoutView.swift
+//  HistoryView.swift
 //  iOS-app-gym
 //
-//  Created by Damon De Letter on 21/12/2022.
+//  Created by Damon De Letter on 22/12/2022.
 //
 
 import SwiftUI
 
-struct WorkoutView: View {
+struct HistoryView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     var body: some View {
         ZStack {
@@ -19,14 +19,14 @@ struct WorkoutView: View {
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
             VStack {
-                Text("Hier start het")
+                Text("Hier komen alle workouts in die al klaar zijn")
             }
         }
     }
 }
 
-struct WorkoutView_Previews: PreviewProvider {
+struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutView()
+        HistoryView()
     }
 }

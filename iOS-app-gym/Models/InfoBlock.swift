@@ -7,6 +7,23 @@
 
 import Foundation
 
+struct InfoBlock: Codable {
+    let id: Int
+    let title, subtitle, description: String
+    let image: String
+    let link: String
+    let date: String
+    let timeToRead: Int
+    let taughtBy, paragraph1, paragraph2, paragraph3: String
+    let paragraph4: String
+
+    enum CodingKeys: String, CodingKey {
+        case id, title, subtitle, description
+        case image, link, date, timeToRead, taughtBy, paragraph1, paragraph2, paragraph3, paragraph4
+    }
+}
+
+/*
 struct InfoBlock : Identifiable, Codable, Hashable {
     
     var id = UUID()
@@ -28,3 +45,5 @@ var infoblocks = [
     InfoBlock(title: "Title1", length: "10 minutes", description: "The best way to build muscle mass!", taughtBy: "Damon", para1: "Blablalblalablalblablablalbalbalblablalba", para2: "Nog meer gedoe hier zetten want ja weet je wel want je weet wel waarom en daarom ja daarom is", para3: "Ik weet niet meer wat ik hier moet zetten, dus daarom zet ik hier maar deze tekst neer.", quote:"Mass moves mass",image: "workouthome", thumnnail: "panda"),
     InfoBlock(title: "Title2", length: "10 minutes", description: "The coolest way to", taughtBy: "Damon", para1: "Blablalblalablalblablablalbalbalblablalba", para2: "Nog meer gedoe hier zetten want ja weet je wel want je weet wel waarom en daarom ja daarom is", para3: "Ik weet niet meer wat ik hier moet zetten, dus daarom zet ik hier maar deze tekst neer.", quote:"Mass moves mass",image: "workouthome", thumnnail: "panda")
 ]
+
+*/

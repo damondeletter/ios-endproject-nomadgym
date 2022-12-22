@@ -1,16 +1,18 @@
 //
-//  WorkoutView.swift
+//  InfoView.swift
 //  iOS-app-gym
 //
-//  Created by Damon De Letter on 21/12/2022.
+//  Created by Damon De Letter on 22/12/2022.
 //
 
 import SwiftUI
 
-struct WorkoutView: View {
+struct InfoView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
+    @State private var infoblocks = [InfoBlock]()
+    @ObservedObject var viewModel = ViewModel()
     var body: some View {
-        ZStack {
+        ZStack{
             backgroundlower
             Path { path in
                 path.move(to: CGPoint(x: 0, y: 0))
@@ -19,14 +21,26 @@ struct WorkoutView: View {
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
             VStack {
-                Text("Hier start het")
+                Text("TEST")
+                 
+                    ForEach(infoblocks, id: \.id) { infoblock in
+                        
+                            Text(infoblock.subtitle)
+                                .font(.headline)
+                    }
+                
+            }.task {
+                await viewModel.fetchData()
+                infoblocks = viewModel.items
+
+                
             }
         }
     }
 }
 
-struct WorkoutView_Previews: PreviewProvider {
+struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutView()
+        InfoView()
     }
 }

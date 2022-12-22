@@ -17,8 +17,16 @@ struct UserView: View {
     @State private var isShowingConfirmation = false
     @State var refresh: Bool = false
     @EnvironmentObject var viewModel : AuthViewModel
+    let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     var body: some View {
         ZStack {
+            backgroundlower
+            Path { path in
+                path.move(to: CGPoint(x: 0, y: 0))
+                path.addLine(to: CGPoint(x: 0, y: 300))
+                path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
+                path.addLine(to: CGPoint(x: 450, y: 0))
+            }.fill(.white)
             VStack {
                 if let user = viewModel.userInCurrentSession {
                     Button {
@@ -51,10 +59,13 @@ struct UserView: View {
                     Text(user.email)
                         .font(.body)
                     Spacer()
+                    Text("Coming soon ")
+                    Text("All your stats and more!")
+                    Spacer()
                     Button {
                         isShowingConfirmation = true
                     } label: {
-                        Label("SIGN OUT", systemImage: "rectangle.portrait.and.arrow.right")
+                        Text("SIGN OUT")
 
                             .bold()
                             .frame(width: 200, height: 40)
@@ -66,10 +77,12 @@ struct UserView: View {
                             
                     }
                     
-                    .buttonStyle(.bordered)
+                    
                     .confirmationDialog("Do you really wanna sign out?", isPresented: $isShowingConfirmation) {
                         Button("I'm sure") {
+                            selectedTab = .house
                             viewModel.signOut()
+                            
                         }
                     
                     }

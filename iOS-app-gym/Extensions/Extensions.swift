@@ -43,6 +43,15 @@ extension View {
     }
 }
 
+extension TabView {
+
+    func myTabViewStyle() -> some View {
+        self.background(LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom))
+            .frame(width: 200, height: 500, alignment: .top)
+            .opacity(0.5)
+
+    }
+}
 
 
 /* https://www.youtube.com/watch?v=h4vyOz4Tztg */
