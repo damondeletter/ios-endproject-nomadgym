@@ -24,10 +24,11 @@
 		82862D8629534D550013275F /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82862D8529534D550013275F /* Fonts.swift */; };
 		82862D8929535DA60013275F /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 82862D8829535DA60013275F /* Kingfisher */; };
 		829DA0322952217400CED4DE /* cup_loader.riv in Resources */ = {isa = PBXBuildFile; fileRef = 829DA0312952217400CED4DE /* cup_loader.riv */; };
-		829DA0362952285300CED4DE /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 829DA0352952285300CED4DE /* Lottie */; };
 		82C147D92954495E00050B8C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147D82954495E00050B8C /* InfoView.swift */; };
 		82C147DB295449AA00050B8C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DA295449AA00050B8C /* HistoryView.swift */; };
 		82C147DD29548CB500050B8C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DC29548CB500050B8C /* ViewModel.swift */; };
+		82C147DF2954B6A000050B8C /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DE2954B6A000050B8C /* InfoDetailView.swift */; };
+		82C147E22954BB2300050B8C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 82C147E12954BB2300050B8C /* SDWebImageSwiftUI */; };
 		82C2F12C295368960009F896 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2F12B295368960009F896 /* WorkoutView.swift */; };
 		82C7BB61294F267100B25CC2 /* iOS_app_gymApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB60294F267100B25CC2 /* iOS_app_gymApp.swift */; };
 		82C7BB63294F267100B25CC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB62294F267100B25CC2 /* ContentView.swift */; };
@@ -61,6 +62,7 @@
 		82C147D82954495E00050B8C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		82C147DA295449AA00050B8C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		82C147DC29548CB500050B8C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		82C147DE2954B6A000050B8C /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
 		82C2F12B295368960009F896 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
 		82C7BB5D294F267100B25CC2 /* iOS-app-gym.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-app-gym.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C7BB60294F267100B25CC2 /* iOS_app_gymApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_app_gymApp.swift; sourceTree = "<group>"; };
@@ -97,9 +99,9 @@
 				82862D7A29533B040013275F /* FirebaseAuth in Frameworks */,
 				82862D7C29533B040013275F /* FirebaseDatabase in Frameworks */,
 				82862D7E29533B040013275F /* FirebaseFirestore in Frameworks */,
+				82C147E22954BB2300050B8C /* SDWebImageSwiftUI in Frameworks */,
 				82862D8929535DA60013275F /* Kingfisher in Frameworks */,
 				82862D8229533B040013275F /* FirebaseStorage in Frameworks */,
-				829DA0362952285300CED4DE /* Lottie in Frameworks */,
 				82862D8029533B040013275F /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,6 +192,7 @@
 				82C2F12B295368960009F896 /* WorkoutView.swift */,
 				82C147D82954495E00050B8C /* InfoView.swift */,
 				82C147DA295449AA00050B8C /* HistoryView.swift */,
+				82C147DE2954B6A000050B8C /* InfoDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,7 +260,6 @@
 			);
 			name = "iOS-app-gym";
 			packageProductDependencies = (
-				829DA0352952285300CED4DE /* Lottie */,
 				82862D022952F9E40013275F /* RiveRuntime */,
 				82862D7929533B040013275F /* FirebaseAuth */,
 				82862D7B29533B040013275F /* FirebaseDatabase */,
@@ -265,6 +267,7 @@
 				82862D7F29533B040013275F /* FirebaseFirestoreSwift */,
 				82862D8129533B040013275F /* FirebaseStorage */,
 				82862D8829535DA60013275F /* Kingfisher */,
+				82C147E12954BB2300050B8C /* SDWebImageSwiftUI */,
 			);
 			productName = "iOS-app-gym";
 			productReference = 82C7BB5D294F267100B25CC2 /* iOS-app-gym.app */;
@@ -295,10 +298,10 @@
 			);
 			mainGroup = 82C7BB54294F267100B25CC2;
 			packageReferences = (
-				829DA0342952285300CED4DE /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				82862D012952F9E40013275F /* XCRemoteSwiftPackageReference "rive-ios" */,
 				82862D7829533B040013275F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				82862D8729535DA60013275F /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				82C147E02954BB2300050B8C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 82C7BB5E294F267100B25CC2 /* Products */;
 			projectDirPath = "";
@@ -341,6 +344,7 @@
 				82862D8629534D550013275F /* Fonts.swift in Sources */,
 				82C7BB81294F73A000B25CC2 /* RegisterView.swift in Sources */,
 				82C7BB61294F267100B25CC2 /* iOS_app_gymApp.swift in Sources */,
+				82C147DF2954B6A000050B8C /* InfoDetailView.swift in Sources */,
 				82CDC54A29506E5D009FAB28 /* InfoSegment.swift in Sources */,
 				82862D68295305950013275F /* User.swift in Sources */,
 				82CDC54D29506E76009FAB28 /* InfoBlock.swift in Sources */,
@@ -580,12 +584,12 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		829DA0342952285300CED4DE /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		82C147E02954BB2300050B8C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -626,10 +630,10 @@
 			package = 82862D8729535DA60013275F /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
-		829DA0352952285300CED4DE /* Lottie */ = {
+		82C147E12954BB2300050B8C /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 829DA0342952285300CED4DE /* XCRemoteSwiftPackageReference "lottie-ios" */;
-			productName = Lottie;
+			package = 82C147E02954BB2300050B8C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
