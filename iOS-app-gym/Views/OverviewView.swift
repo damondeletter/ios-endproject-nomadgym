@@ -13,7 +13,7 @@ struct OverviewView: View {
     @Namespace var namespace
     @State private var infoblocks = [InfoBlock]()
     @ObservedObject var viewModel = ViewModel()
-    @State var show = false
+    @State var show = true
     var body: some View {
         ZStack {
             backgroundlower
@@ -27,7 +27,7 @@ struct OverviewView: View {
                 
             ScrollView(.vertical) {
                     VStack(alignment: .leading) {
-                        Text("Articles").frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F)).font(.title)
+                        Text("Recent sessions").frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F)).font(.title)
                             .fontWeight(.bold)
                     }
                     HStack{
@@ -35,7 +35,7 @@ struct OverviewView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 ForEach(infoblocks.prefix(4), id:\.id) { infoblock in
-                                    VerticalCard(infoblock: infoblock).padding(.trailing, 20)
+                                    VerticalCard().padding(.trailing, 20)
                                     
                                 }
                             }
@@ -48,17 +48,17 @@ struct OverviewView: View {
                         ExploreHorizontalCard()
                     }
                     VStack {
-                        if !show {
-                            Text("Info section").frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F)).font(.title)
+                        VStack {
+                            Text("Info section").font(.title)
                                 .fontWeight(.bold)
-                            ForEach(infoblocks.prefix(1), id:\.id) { infoblock in
-                                InfoItem(namespace: namespace, show: $show, infoblock: infoblock).onTapGesture {
-                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                                        show.toggle()
-                                        
-                                    }}
+                            Text("Most recent article:")
+                        }.frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F))
+                            ForEach(infoblocks.suffix(1), id:\.id) { infoblock in
+                                NavigationLink(destination: InfoDetailView(infoblock: infoblock)) {
+                                    InfoItem(namespace: namespace, show: $show, infoblock: infoblock)
+                                }
                             }
-                    }
+                    
                         
                     }
                     
@@ -68,7 +68,7 @@ struct OverviewView: View {
                     
                     
                 }.padding(.top, 100).padding(.leading, 20)
-            if show {InfoSegment(namespace: namespace, show: $show)}
+           
             
         }.ignoresSafeArea()
     }

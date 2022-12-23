@@ -30,7 +30,7 @@ struct ExploreHorizontalCard: View {
                 HStack{
                     Button {
                     }label: {
-                        Image(systemName: "archivebox").resizable().frame(width: 28, height:28).background(
+                        Image(systemName: "arrow.counterclockwise.circle").resizable().frame(width: 28, height:28).background(
                             Circle()
                                 .foregroundColor(iconBackground)
                                 .frame(width: 50, height: 50)

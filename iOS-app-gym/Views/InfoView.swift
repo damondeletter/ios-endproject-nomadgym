@@ -23,52 +23,70 @@ struct InfoView: View {
                 path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
+            VStack {
+                VStack {
+                    Text("All articles").frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F)).font(.title)
+                        .fontWeight(.bold)
+                }
             HStack {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
+                        
                         ForEach(infoblocks, id: \.id) { infoblock in
                             NavigationLink(destination: InfoDetailView(infoblock: infoblock)) {
                                 
-                                VStack {
-                                    WebImage(url: URL(string: infoblock.image)).resizable().frame(width: 300, height: 200)
-                                        .scaledToFit()
-                                        .cornerRadius(16)
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            Text(infoblock.title).font(.title)
-                                            Text(infoblock.subtitle).font(.subheadline)
-                                            Text(infoblock.description).font(.subheadline).frame(maxWidth: 250)
-                                                .multilineTextAlignment(.leading)
-                                            Text("Taught by: \(infoblock.taughtBy)")
-                                        }
-                                        .layoutPriority(100)
-                                        Spacer()
+                                VStack{
+                                    Spacer()
+                                    VStack(alignment: .leading, spacing:12)  {
+                                        Text(infoblock.title)
+                                            .font(.largeTitle)
+                                        
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                        Text(infoblock.subtitle)
+                                            .font(.footnote.weight(.semibold))
+                                        
+                                        Text(infoblock.taughtBy)
+                                            .font(.footnote)
+                                        
                                     }
-                                    .padding()
+                                    .padding(20)
+                                    .background(
+                                        Rectangle().fill(.ultraThinMaterial)
+                                            .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                                            .blur(radius: 30)
+                                        
+                                    )
                                     
-                                    .cornerRadius(8)
-                                    .foregroundColor(.black)
-                                }.overlay(
-                                    RoundedRectangle(cornerRadius: 16)
-                                        .stroke(.gray, lineWidth: 4)
-                                )
-                        
-                                .padding([.top,.horizontal])
-                               
+                                }
+                                .foregroundColor(.white)
+                                .background(Image("lifter").resizable().aspectRatio(contentMode: .fit))
+                                .background(Image("color2").resizable().aspectRatio(contentMode: .fill))
+                                .mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                                .frame(height: 300)
+                                .padding(.trailing, 5).padding(.bottom, 10)
+                                .ignoresSafeArea()
+                                
                             }
                             .foregroundColor(.primary)
                             
                         }
                     }
-                
+                    
                 }
                 
             }.task {
                 await viewModel.fetchData()
                 infoblocks = viewModel.items
-
+                
                 
             }
+                VStack {
+                    Text("Coming soon").font(.title)
+                        .fontWeight(.bold)
+                    Text("Already read articles")
+                }.frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F))
+        }
+           
         }.ignoresSafeArea()
     }
 }
