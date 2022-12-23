@@ -48,7 +48,8 @@ struct UserView: View {
                         }
                         
                     }
-                    .sheet(isPresented: $showImagePicker, onDismiss: loadingImage) {
+                    .sheet(isPresented: $showImagePicker, onDismiss:
+                        loadingImage) {
                         ImageSelectorController(selectedImage: $selectedImage)
                     }
                     .padding(.top, 10)
@@ -98,9 +99,8 @@ struct UserView: View {
 
     func loadingImage() {
         guard let selectedImage = selectedImage else {return}
-        
         viewModel.uploadProfilePicture(selectedImage)
-        print("Versturen begonnen")
+        update()
         profileImage = KFImage(URL(string: viewModel.userInCurrentSession!.profileImageUrl))
         update()
     }

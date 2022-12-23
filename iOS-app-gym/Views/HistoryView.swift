@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HistoryView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
+    @State private var workouts = [Workout]()
     var body: some View {
         ZStack {
             backgroundlower

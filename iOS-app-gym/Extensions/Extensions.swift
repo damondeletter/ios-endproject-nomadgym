@@ -53,6 +53,11 @@ extension TabView {
     }
 }
 
+extension Collection {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
 
 /* https://www.youtube.com/watch?v=h4vyOz4Tztg */
 /* https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values */

@@ -25,27 +25,27 @@ struct TabBarView: View {
                 case "plus.app.fill":
                     NavigationView {
                         WorkoutView()
-                    }.navigationTitle("Workout")
+                    }.navigationBarTitle("Workout", displayMode: .inline)
                 case "house":
                     NavigationView {
                         OverviewView()
-                    }.navigationTitle("Home")
+                    }.navigationBarTitle("Home", displayMode: .inline)
                 case "person":
                     NavigationView {
                         UserView()
-                    }.navigationTitle("User info")
+                    }.navigationBarTitle("User info", displayMode: .inline)
                 case "newspaper":
                     NavigationView {
                         InfoView()
-                    }.navigationTitle("Info blogs")
+                    }.navigationBarTitle("Info blogs", displayMode: .inline)
                 case "arrow.counterclockwise.circle":
                     NavigationView {
                         HistoryView()
-                    }.navigationTitle("History")
+                    }.navigationBarTitle("History", displayMode: .inline)
                 default:
                     NavigationView {
                         OverviewView()
-                    }.navigationTitle("Home")
+                    }.navigationBarTitle("Home", displayMode: .inline)
                 }
             }
             HStack {

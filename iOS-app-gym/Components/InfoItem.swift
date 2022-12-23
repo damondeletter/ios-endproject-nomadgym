@@ -8,21 +8,21 @@
 import SwiftUI
 
 struct InfoItem: View {
-    var namespace: Namespace.ID
-    @Binding var show: Bool
-    
+    var namespace : Namespace.ID
+    @Binding var show : Bool
+    let infoblock : InfoBlock
     var body: some View {
         VStack{
             Spacer()
             VStack(alignment: .leading, spacing:12)  {
-                Text("tijdelijk")
+                Text(infoblock.title)
                     .font(.largeTitle)
                     .matchedGeometryEffect(id: "title", in: namespace)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("tijdelijk")
+                Text(infoblock.subtitle)
                     .font(.footnote.weight(.semibold))
                     .matchedGeometryEffect(id: "subtitle", in: namespace)
-                Text("tijdelijk")
+                Text(infoblock.taughtBy)
                     .font(.footnote)
                     .matchedGeometryEffect(id: "text", in: namespace)
             }
@@ -35,21 +35,13 @@ struct InfoItem: View {
             )
             
         }
-        
         .foregroundColor(.white)
         .background(Image("lifter").resizable().aspectRatio(contentMode: .fit).matchedGeometryEffect(id: "image", in: namespace))
         .background(Image("color2").resizable().aspectRatio(contentMode: .fill).matchedGeometryEffect(id: "background", in: namespace))
         .mask(RoundedRectangle(cornerRadius: 30, style: .continuous).matchedGeometryEffect(id: "mask", in: namespace))
         .frame(height: 300)
-        .padding(20)
+        .padding(.trailing, 5).padding(.bottom, 10)
         .ignoresSafeArea()
     }
 }
 
-struct InfoItem_Previews: PreviewProvider {
-    @Namespace static var namespace
-  
-    static var previews: some View {
-        InfoItem(namespace: namespace,show: .constant(true))
-    }
-}

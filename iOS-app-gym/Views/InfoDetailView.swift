@@ -12,8 +12,6 @@ struct InfoDetailView: View {
     
     let infoblock : InfoBlock
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
-
-    
     var body: some View {
         ZStack {
             backgroundlower

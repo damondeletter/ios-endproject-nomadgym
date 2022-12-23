@@ -10,7 +10,6 @@ import SwiftUI
 struct InfoSegment: View {
     var namespace : Namespace.ID
     @Binding var show : Bool
-  
     var body: some View {
         ZStack {
             ScrollView {
@@ -30,7 +29,7 @@ struct InfoSegment: View {
                     .background(.ultraThinMaterial, in: Circle())
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
-            .padding(30)
+            .padding(.top,50).padding(.trailing, 60)
             .ignoresSafeArea()
         }
         
@@ -54,7 +53,7 @@ struct InfoSegment: View {
                 .matchedGeometryEffect(id: "background", in: namespace)
         )
         .mask(RoundedRectangle(cornerRadius: 30, style: .continuous)
-            .matchedGeometryEffect(id: "mask", in: namespace)
+            
         )
         .overlay(
             VStack(alignment: .leading, spacing: 12) {
@@ -68,7 +67,7 @@ struct InfoSegment: View {
                     .matchedGeometryEffect(id: "subtitle", in: namespace)
                 Text("Build an iOS app for iOS 15 with custom layouts, animations and...")
                     .font(.footnote)
-                    .matchedGeometryEffect(id: "text", in: namespace)
+                    
                 Divider()
                 HStack {
                     Image("Profile")
@@ -97,7 +96,6 @@ struct InfoSegment: View {
 
 struct InfoSegment_Previews: PreviewProvider {
     @Namespace static var namespace
-    
     static var previews: some View {
         InfoSegment(namespace: namespace, show: .constant(true))
     }
