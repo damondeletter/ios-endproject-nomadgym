@@ -83,6 +83,7 @@ struct UserView: View {
                         Button("I'm sure") {
                             selectedTab = .house
                             viewModel.signOut()
+                            selectedTab = .house
                             
                         }
                     

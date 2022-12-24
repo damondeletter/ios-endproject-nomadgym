@@ -40,4 +40,34 @@ class AuthViewModel : ObservableObject {
             self.userInCurrentSession = user
         }
     }
+    
+    
+    
+    func postCredentials(_ uid: String,_ name: String,_ emailAdress: String) {
+        guard let url = URL(string: "http://localhost:9000/api/users/register") else {
+            
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let postString = "name=\(name)&emailaddress=\(emailAdress)&uid=\(uid)";
+        
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                
+                // Check for Error
+                if let error = error {
+                    print("Error took place \(error)")
+                    return
+                }
+         
+                // Convert HTTP Response Data to a String
+                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                    print("Response data string:\n \(dataString)")
+                }
+        }
+        print("post credentials gelukt")
+        task.resume()
+    }
 }

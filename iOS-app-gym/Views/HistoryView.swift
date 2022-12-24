@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct HistoryView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     @State private var workouts = [Workout]()
+    @ObservedObject var viewModel = ViewModel()
     var body: some View {
         ZStack {
             backgroundlower
@@ -20,7 +22,28 @@ struct HistoryView: View {
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
             VStack {
-                Text("Hier komen alle workouts in die al klaar zijn")
+                Button {
+                   print(Auth.auth().currentUser!.uid)
+                } label : {
+                    ForEach(workouts, id: \.id) { workout in
+                        NavigationLink(destination: HistoryDetailView(workout: workout)) {
+                            HStack {
+                                Text(workout.name)
+                                Spacer()
+                                Text(workout.workoutdate.prefix(10))
+                                
+                            }
+                            .padding()
+                            .listRowBackground(Color.hexColour(hexValue: 0x77BAFE))
+                        }
+                    }
+                }
+                Spacer()
+            }.task {
+                await viewModel.fetchWorkouts(Auth.auth().currentUser!.uid)
+                workouts = viewModel.workouts
+                
+                
             }
         }
     }

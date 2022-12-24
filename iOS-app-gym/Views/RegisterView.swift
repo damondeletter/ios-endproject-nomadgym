@@ -17,7 +17,7 @@ struct RegisterView: View {
     let welcomeText : String = "Welcome to nomadgym"
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     let buttonColor = Color.hexColour(hexValue: 0x6715f9)
-    
+    @EnvironmentObject private var authViewModel : AuthViewModel
     @State private var alert = false
     @State private var error = ""
     
@@ -176,19 +176,27 @@ struct RegisterView: View {
 
     
     func register() {
+        print("User creating.....")
         Auth.auth().createUser(withEmail: email, password: password){ result, error in
             if error != nil {
                 self.error = error!.localizedDescription
                 self.alert = true
             } else {
                 Auth.auth().signIn(withEmail: self.email, password: self.password)
+                print("signed in")
                 self.AddUserInformationToFirebase()
                 self.alert = false
                 self.userIsLoggedIn = true
                 
+                guard let uid = Auth.auth().currentUser?.uid else {return}
+                let name = self.firstName + " " + self.lastName
+                print("Name is: \(name), uid is: \(uid), email is: \(self.email)")
+                authViewModel.postCredentials(uid, name, self.email)
+                print("GELUKT, hier ben ik")
             }
-            
         }
+        
+        
     }
     private func AddUserInformationToFirebase() {
         guard let uid = Auth.auth().currentUser?.uid else {return}

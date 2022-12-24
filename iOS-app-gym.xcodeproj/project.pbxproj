@@ -49,6 +49,7 @@
 		82CDC54D29506E76009FAB28 /* InfoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54C29506E76009FAB28 /* InfoBlock.swift */; };
 		82CDC54F29506F23009FAB28 /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54E29506F23009FAB28 /* InfoItem.swift */; };
 		82CDC55229507398009FAB28 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC55129507398009FAB28 /* TabBarView.swift */; };
+		82D8CFED295752460082FFB6 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8CFEC295752460082FFB6 /* HistoryDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		82CDC55E2950C348009FAB28 /* confetti.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = confetti.riv; sourceTree = "<group>"; };
 		82CDC55F2950C348009FAB28 /* house.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = house.riv; sourceTree = "<group>"; };
 		82CDC5602950C356009FAB28 /* add_icon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = add_icon.riv; sourceTree = "<group>"; };
+		82D8CFEC295752460082FFB6 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				82C147DA295449AA00050B8C /* HistoryView.swift */,
 				82C147DE2954B6A000050B8C /* InfoDetailView.swift */,
 				82A8B61A2955E92700AAFD43 /* WorkoutDialogView.swift */,
+				82D8CFEC295752460082FFB6 /* HistoryDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				82C147DD29548CB500050B8C /* ViewModel.swift in Sources */,
 				82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */,
 				82862D662953056D0013275F /* DataManager.swift in Sources */,
+				82D8CFED295752460082FFB6 /* HistoryDetailView.swift in Sources */,
 				82C7BB70294F2A8F00B25CC2 /* Extensions.swift in Sources */,
 				82862D6E29531A810013275F /* ImageUploader.swift in Sources */,
 				82862D8629534D550013275F /* Fonts.swift in Sources */,

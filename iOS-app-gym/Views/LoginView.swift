@@ -15,7 +15,7 @@ struct LoginView: View {
     let welcomeText : String = "Welcome to nomadgym"
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     let buttonColor = Color.hexColour(hexValue: 0x6715f9)
-    
+    @State private var selectedTab : Tab = .house
     @State private var writing = false
     @State private var movingCursor = false
     @State private var blinkingCursor = false
@@ -127,6 +127,7 @@ struct LoginView: View {
                 .alert(error, isPresented: $alert, actions: {})
                 .keyboardShortcut(.defaultAction).keyboardShortcut(.tab).onSubmit {
                     login()
+                    selectedTab = .house
                 }
                 
                 
