@@ -11,8 +11,10 @@ import Firebase
 struct OverviewView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     @Namespace var namespace
+    @State private var selectedTab : Tab = .house
     @State private var infoblocks = [InfoBlock]()
     @ObservedObject var viewModel = ViewModel()
+
     @State var show = true
     var body: some View {
         ZStack {
@@ -58,8 +60,6 @@ struct OverviewView: View {
                                     InfoItem(namespace: namespace, show: $show, infoblock: infoblock)
                                 }
                             }
-                    
-                        
                     }
                     
                 }.task {

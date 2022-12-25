@@ -10,8 +10,10 @@ import Firebase
 
 struct HistoryView: View {
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
+    @State private var selectedTab : Tab = .arrow
     @State private var workouts = [Workout]()
     @ObservedObject var viewModel = ViewModel()
+    
     var body: some View {
         ZStack {
             backgroundlower
@@ -22,10 +24,34 @@ struct HistoryView: View {
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
             VStack {
-                Button {
-                   print(Auth.auth().currentUser!.uid)
-                } label : {
-                    ForEach(workouts, id: \.id) { workout in
+             
+                HStack {
+                    Text("Last week's workouts:").font(.title2).bold()
+                    Spacer()
+                }
+                .padding()
+                        ForEach(workouts.suffix(7), id: \.id) { workout in
+                            NavigationLink(destination: HistoryDetailView(workout: workout)) {
+                                HStack {
+                                    Text(workout.name)
+                                    Spacer()
+                                    Text(workout.workoutdate.prefix(10))
+                                    Image(systemName: "arrow.right")
+                                    
+                                }
+                                .padding()
+                                .listRowBackground(Color.hexColour(hexValue: 0x77BAFE))
+            
+                            }
+                }
+                        .foregroundColor(.gray)
+                
+                if(workouts.count > 7) {
+                    HStack {
+                        Text("Older workouts:").font(.title2).bold()
+                        Spacer()
+                    }
+                    ForEach(workouts.prefix(workouts.count - 7), id: \.id) { workout in
                         NavigationLink(destination: HistoryDetailView(workout: workout)) {
                             HStack {
                                 Text(workout.name)
@@ -35,9 +61,12 @@ struct HistoryView: View {
                             }
                             .padding()
                             .listRowBackground(Color.hexColour(hexValue: 0x77BAFE))
+                            
                         }
                     }
+                    .foregroundColor(.gray)
                 }
+                
                 Spacer()
             }.task {
                 await viewModel.fetchWorkouts(Auth.auth().currentUser!.uid)

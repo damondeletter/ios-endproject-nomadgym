@@ -41,7 +41,7 @@ struct HistoryDetailView: View {
                             }.padding(.horizontal)
                             
                             HStack {
-                                VStack {
+                                VStack(alignment: .leading) {
                                     ForEach(Array(exercise.sets.enumerated()), id: \.element) { index,setje in
                                         VStack(alignment: .leading) {
                                             Text("Set \(index + 1):").bold()

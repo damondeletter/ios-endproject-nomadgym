@@ -9,36 +9,50 @@ import SwiftUI
 
 struct ExploreHorizontalCard: View {
     let iconBackground = Color.hexColour(hexValue: 0x1C8CFE)
+    @State private var selectedTab : Tab = .house
+   @State private var show = false
     var body: some View {
-        
-    
         HStack(spacing: 20) {
             VStack(alignment: .leading, spacing:7) {
                 HStack{
-                    Button {
-                    }label: {
-                        Image(systemName: "plus").resizable().frame(width: 28, height:28).background(
-                            Circle()
-                                .foregroundColor(iconBackground)
-                                .frame(width: 50, height: 50)
-                        ).padding(.trailing,20)
-                        Text("Start a new workout").fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
+                        NavigationLink(destination: WorkoutDialogView()) {
+                            Button {
+                                show = true
+                            }label: {
+                                Image(systemName: "plus").resizable().frame(width: 28, height:28).background(
+                                    Circle()
+                                        .foregroundColor(iconBackground)
+                                        .frame(width: 50, height: 50)
+                                ).padding(.trailing,20)
+                                Text("Start a new workout").fontWeight(.bold)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            
+                            .sheet(isPresented: $show) {
+                                WorkoutDialogView()
+                            }
+                            .navigationTitle("")
+                            .navigationBarHidden(true)
+                        }
+                    
                 }
                 Spacer()
                 HStack{
                     Button {
-                    }label: {
-                        Image(systemName: "arrow.counterclockwise.circle").resizable().frame(width: 28, height:28).background(
-                            Circle()
-                                .foregroundColor(iconBackground)
-                                .frame(width: 50, height: 50)
-                        ).padding(.trailing,20)
-                        Text("Review your workouts").fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                        selectedTab = .arrow
+                    } label: {
+                        NavigationLink(destination: HistoryView()) {
+                            Image(systemName: "arrow.counterclockwise.circle").resizable().frame(width: 28, height:28).background(
+                                Circle()
+                                    .foregroundColor(iconBackground)
+                                    .frame(width: 50, height: 50)
+                            ).padding(.trailing,20)
+                            Text("Review your workouts").fontWeight(.bold)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
                     }
                 }
+                
             }
             Divider()
             
