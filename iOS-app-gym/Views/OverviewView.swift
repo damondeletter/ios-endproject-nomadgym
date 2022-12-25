@@ -13,6 +13,7 @@ struct OverviewView: View {
     @Namespace var namespace
     @State private var selectedTab : Tab = .house
     @State private var infoblocks = [InfoBlock]()
+    @State private var workouts = [Workout]()
     @ObservedObject var viewModel = ViewModel()
 
     @State var show = true
@@ -36,9 +37,10 @@ struct OverviewView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                ForEach(infoblocks.prefix(4), id:\.id) { infoblock in
-                                    VerticalCard().padding(.trailing, 20)
-                                    
+                                ForEach(workouts.prefix(2), id:\.id) { workout in
+                                    NavigationLink(destination: HistoryDetailView(workout: workout)) {
+                                        VerticalCard(workout : workout).padding(.trailing, 20)
+                                    }
                                 }
                             }
                         }
@@ -64,7 +66,9 @@ struct OverviewView: View {
                     
                 }.task {
                     await viewModel.fetchData()
+                    await viewModel.fetchWorkouts(Auth.auth().currentUser!.uid)
                     infoblocks = viewModel.items
+                    workouts = viewModel.workouts
                     
                     
                 }.padding(.top, 100).padding(.leading, 20)

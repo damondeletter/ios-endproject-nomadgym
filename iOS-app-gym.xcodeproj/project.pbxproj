@@ -50,6 +50,8 @@
 		82CDC54F29506F23009FAB28 /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54E29506F23009FAB28 /* InfoItem.swift */; };
 		82CDC55229507398009FAB28 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC55129507398009FAB28 /* TabBarView.swift */; };
 		82D8CFED295752460082FFB6 /* HistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8CFEC295752460082FFB6 /* HistoryDetailView.swift */; };
+		82D8CFF12958AD100082FFB6 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8CFF02958AD100082FFB6 /* Exercise.swift */; };
+		82D8CFF32958AD290082FFB6 /* Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D8CFF22958AD290082FFB6 /* Set.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +100,8 @@
 		82CDC55F2950C348009FAB28 /* house.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = house.riv; sourceTree = "<group>"; };
 		82CDC5602950C356009FAB28 /* add_icon.riv */ = {isa = PBXFileReference; lastKnownFileType = file; path = add_icon.riv; sourceTree = "<group>"; };
 		82D8CFEC295752460082FFB6 /* HistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryDetailView.swift; sourceTree = "<group>"; };
+		82D8CFF02958AD100082FFB6 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		82D8CFF22958AD290082FFB6 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 		82C7BB5F294F267100B25CC2 /* iOS-app-gym */ = {
 			isa = PBXGroup;
 			children = (
+				82D8CFF42958AD930082FFB6 /* ViewModels */,
 				82862D642953054E0013275F /* Firebase */,
 				82CDC5572950C2E0009FAB28 /* Rive */,
 				82CDC55029507052009FAB28 /* Navigation */,
@@ -228,6 +233,8 @@
 				82862D67295305950013275F /* User.swift */,
 				82C147DC29548CB500050B8C /* ViewModel.swift */,
 				82A8B61429559E9900AAFD43 /* Workout.swift */,
+				82D8CFF02958AD100082FFB6 /* Exercise.swift */,
+				82D8CFF22958AD290082FFB6 /* Set.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +263,13 @@
 				82CDC55E2950C348009FAB28 /* confetti.riv */,
 			);
 			path = Rive;
+			sourceTree = "<group>";
+		};
+		82D8CFF42958AD930082FFB6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +368,7 @@
 				82C147DD29548CB500050B8C /* ViewModel.swift in Sources */,
 				82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */,
 				82862D662953056D0013275F /* DataManager.swift in Sources */,
+				82D8CFF32958AD290082FFB6 /* Set.swift in Sources */,
 				82D8CFED295752460082FFB6 /* HistoryDetailView.swift in Sources */,
 				82C7BB70294F2A8F00B25CC2 /* Extensions.swift in Sources */,
 				82862D6E29531A810013275F /* ImageUploader.swift in Sources */,
@@ -363,6 +378,7 @@
 				82C147DF2954B6A000050B8C /* InfoDetailView.swift in Sources */,
 				82A8B61529559E9900AAFD43 /* Workout.swift in Sources */,
 				82CDC54A29506E5D009FAB28 /* InfoSegment.swift in Sources */,
+				82D8CFF12958AD100082FFB6 /* Exercise.swift in Sources */,
 				82862D68295305950013275F /* User.swift in Sources */,
 				82CDC54D29506E76009FAB28 /* InfoBlock.swift in Sources */,
 				82A8B6192955A44000AAFD43 /* VerticalCard.swift in Sources */,

@@ -45,7 +45,6 @@ class AuthViewModel : ObservableObject {
     
     func postCredentials(_ uid: String,_ name: String,_ emailAdress: String) {
         guard let url = URL(string: "http://localhost:9000/api/users/register") else {
-            
             return
         }
         var request = URLRequest(url: url)
