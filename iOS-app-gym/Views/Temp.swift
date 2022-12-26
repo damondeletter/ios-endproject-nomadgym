@@ -6,21 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct Temp: View {
     let buttonColor = Color.hexColour(hexValue: 0x6715f9)
     let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     @AppStorage("exerciseAmount") private var exerciseAmount: Int = 0
-    @State private var workoutname: String = ""
+    @AppStorage("workoutName") private var workoutname: String = ""
+    @AppStorage("workoutDuration") private var workoutDuration : Int = 0
     @State private var showingPopover = false
     @State private var setAmount: Int = 4
-    var muscles = ["Chest", "Shoulders", "Rear delts", "Biceps", "Triceps", "Glutes", "Quads", "Hamstrings", "Calves", "Abs", "Back","Forearms"]
+    var muscles = ["Choose a muscle", "Chest", "Shoulders", "Rear delts", "Biceps", "Triceps", "Glutes", "Quads", "Hamstrings", "Calves", "Abs", "Back","Forearms"]
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
         formatter.zeroSymbol  = ""
         return formatter
     }()
+    
+    @ObservedObject var workoutviewModel = WorkoutExerciseViewModel()
+    @ObservedObject var authviewModel = AuthViewModel()
     @AppStorage("Exercises") private var exercises: [ExerciseSwift] = []
     
     var body: some View {
@@ -38,8 +43,10 @@ struct Temp: View {
                             HStack {
                                 Text("Amount of exercises")
                                 Button(action: {
-                                    self.exerciseAmount -= 1
-                                    self.exercises.remove(at: self.exerciseAmount + 1)
+                                    if(self.exerciseAmount > 0 && self.exerciseAmount <= self.exercises.count) {
+                                            self.exercises.removeLast()
+                                            self.exerciseAmount -= 1
+                                        }
                                 }) {
                                     Image(systemName: "minus")
                                 }
@@ -53,13 +60,14 @@ struct Temp: View {
                                 Spacer()
                             }
                         }
-                        
-                        ForEach(0..<exerciseAmount, id: \.self) { index in
-                            if index < self.exercises.count {
-                                self.exerciseView(for: index).padding(.vertical, 20)
+                        if(exerciseAmount > 0) {
+                            ForEach(0..<exerciseAmount, id: \.self) { index in
+                                if index < self.exercises.count {
+                                    self.exerciseView(for: index).padding(.vertical, 20)
+                                }
+                                Divider()
                             }
-                            Divider()
-                        }
+                        
                         Button {
                             showingPopover = true
                             print(exercises)
@@ -93,11 +101,11 @@ struct Temp: View {
                                         }
                                         HStack {
                                             Text("Workout length:").padding().bold()
-                                            TextField("duration", value: $workoutname, formatter: numberFormatter).padding().autocorrectionDisabled()
+                                            TextField("duration", value: $workoutDuration, formatter: numberFormatter).padding().autocorrectionDisabled()
                                         }
                                         Button {
                                             //finish
-                                            
+                                            finishWorkout()
                                         } label: {
                                             Text("END WORKOUT")
                                                 .bold()
@@ -113,17 +121,39 @@ struct Temp: View {
                                 .ignoresSafeArea()
                             }
                         Spacer()
+                        }
                     }.padding(.top, 150).padding(.horizontal, 20)
                 }
+                .onAppear(perform: {
+                    exerciseAmount = 0
+                })
                 
             }.ignoresSafeArea()
+            
+    }
+
+    private func finishWorkout() {
+        workoutviewModel.postWorkout(name: workoutname, totalTime: workoutDuration, hasStarted: 1, workoutDate: getCurrentDate(), userUid: Auth.auth().currentUser!.uid, exercises: exercises)
+        
+        exerciseAmount = 0
+        
+        
+        workoutname = ""
+        workoutDuration = 0
+    }
+    private func getCurrentDate() -> String {
+        let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        return format.string(from: date)
     }
     
     private func exerciseView(for index: Int) -> some View {
+        
         VStack {
             HStack {
                 Text("Exercisename:").bold()
-                TextField("Exercise name", text: self.$exercises[index].name)
+                TextField("Exercise name", text: self.$exercises[index].name).autocorrectionDisabled()
                 
             }
             HStack {
@@ -132,10 +162,10 @@ struct Temp: View {
                     ForEach(muscles, id: \.self) {
                         Text($0)
                     }
-                }
+                }.frame(width: 200)
                 Spacer()
             }
-            ForEach(0..<self.setAmount, id: \.self) { setIndex in
+            ForEach(0...4, id: \.self) { setIndex in
                 if setIndex < self.exercises[index].sets.count {
                     self.setView(for: index, setIndex: setIndex)
                 }
@@ -144,6 +174,7 @@ struct Temp: View {
     }
     
     private func setView(for index: Int, setIndex: Int) -> some View {
+        
         HStack {
             Text("Set \(index + 1):").bold()
             TextField("Reps", text: Binding<String>(get: {

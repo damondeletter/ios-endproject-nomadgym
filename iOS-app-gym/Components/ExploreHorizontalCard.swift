@@ -29,7 +29,7 @@ struct ExploreHorizontalCard: View {
                             }
                             
                             .sheet(isPresented: $show) {
-                                WorkoutDialogView()
+                                Temp()
                             }
                             .navigationTitle("")
                             .navigationBarHidden(true)

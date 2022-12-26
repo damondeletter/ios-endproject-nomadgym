@@ -19,44 +19,48 @@ struct HistoryDetailView: View {
                 path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
-            VStack {
-                HStack(alignment: .center) {
-                    Text(workout.name).font(.title)
-                }
-                HStack {
-                    Text(workout.workoutdate.prefix(10)).font(.subheadline)
-                }
+            ScrollView {
+                
                 VStack {
-                    ForEach(workout.exercises, id: \.id) { exercise in
-                        VStack{
-                            Text(exercise.name).bold()
-                            
-                            Text("Muscle group trained: \(exercise.musclegroup.uppercased())")
-                            
-                        }.padding()
-                        VStack {
-                            HStack {
-                                Text("Sets:").font(.title2).bold()
-                                Spacer()
-                            }.padding(.horizontal)
-                            
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    ForEach(Array(exercise.sets.enumerated()), id: \.element) { index,setje in
-                                        VStack(alignment: .leading) {
-                                            Text("Set \(index + 1):").bold()
-                                            Text("\(setje.reps) x \(setje.weight) kg")
-                                        }
-                                    }
-                                }
-                                Spacer()
-                            }
-                            .padding(.horizontal)
-                        }
-                        
+                    HStack(alignment: .center) {
+                        Text(workout.name).font(.title)
                     }
-                }
-                Spacer()
+                    HStack {
+                        Text(workout.workoutdate.prefix(10)).font(.subheadline)
+                    }
+                    VStack {
+                        ForEach(workout.exercises, id: \.id) { exercise in
+                            if(exercise.name != "" || exercise.musclegroup != "") {
+                                VStack{
+                                    Text(exercise.name).bold()
+                                    
+                                    Text("Muscle group trained: \(exercise.musclegroup.uppercased())")
+                                    
+                                }.padding()
+                                VStack {
+                                    HStack {
+                                        Text("Sets:").font(.title2).bold()
+                                        Spacer()
+                                    }.padding(.horizontal)
+                                    
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            ForEach(Array(exercise.sets.enumerated()), id: \.element) { index,setje in
+                                                VStack(alignment: .leading) {
+                                                    Text("Set \(index + 1):").bold()
+                                                    Text("\(setje.reps) x \(setje.weight) kg")
+                                                }
+                                            }
+                                        }
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal)
+                                }
+                            }
+                        }
+                    }
+                    Spacer()
+                }.padding(.top, 50)
             }
         }
     }
