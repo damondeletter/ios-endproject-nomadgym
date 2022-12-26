@@ -20,6 +20,6 @@ struct Exercise: Codable {
 }
 
 struct ExerciseSwift : Codable {
-    let name, musclegroup : String
-    let sets : [SetSwift]
+    var name, musclegroup : String
+    var sets : [SetSwift]
 }

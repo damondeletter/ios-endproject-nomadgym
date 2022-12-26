@@ -212,6 +212,7 @@ struct WorkoutDialogView: View {
                                     }
                                     Button {
                                         //finish
+                                        
                                     } label: {
                                         Text("END WORKOUT")
                                             .bold()

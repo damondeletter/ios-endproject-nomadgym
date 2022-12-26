@@ -45,7 +45,7 @@ struct WorkoutView: View {
                     .padding(.top)
                     .offset(y: 100)
                     .sheet(isPresented: $show) {
-                        WorkoutDialogView()
+                        Temp()
                     }
                     Spacer()
                     Spacer()

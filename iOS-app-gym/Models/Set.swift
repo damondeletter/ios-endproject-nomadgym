@@ -19,5 +19,5 @@ struct Set: Codable, Hashable {
 }
 
 struct SetSwift : Codable {
-    let reps, weight : Int
+    var reps, weight : Int
 }
