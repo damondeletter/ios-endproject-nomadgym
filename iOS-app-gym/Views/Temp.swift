@@ -14,6 +14,7 @@ struct Temp: View {
     @State private var workoutname: String = ""
     @State private var showingPopover = false
     @State private var setAmount: Int = 4
+    var muscles = ["Chest", "Shoulders", "Rear delts", "Biceps", "Triceps", "Glutes", "Quads", "Hamstrings", "Calves", "Abs", "Back","Forearms"]
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .none
@@ -31,89 +32,89 @@ struct Temp: View {
                     path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
                     path.addLine(to: CGPoint(x: 450, y: 0))
                 }.fill(.white)
-                VStack {
-                    HStack {
-                       
-                        
-
-                        
+                ScrollView {
+                    VStack {
                         HStack {
-                            Text("Amount of exercises")
-                            Button(action: {
-                                self.exerciseAmount -= 1
-                                self.exercises.popLast()
-                            }) {
-                                Image(systemName: "minus")
+                            HStack {
+                                Text("Amount of exercises")
+                                Button(action: {
+                                    self.exerciseAmount -= 1
+                                    self.exercises.remove(at: self.exerciseAmount + 1)
+                                }) {
+                                    Image(systemName: "minus")
+                                }
+                                Image(systemName: "\(exerciseAmount).circle").frame(width: 50, height: 50).font(.title)
+                                Button(action: {
+                                    self.exerciseAmount += 1
+                                    self.exercises.append(ExerciseSwift(name: "", musclegroup: "", sets: [SetSwift(reps: 0, weight: 0)]))
+                                }) {
+                                    Image(systemName: "plus")
+                                }
+                                Spacer()
                             }
-                            Image(systemName: "\(exerciseAmount).circle").frame(width: 50, height: 50).font(.title)
-                            Button(action: {
-                                self.exerciseAmount += 1
-                                self.exercises.append(ExerciseSwift(name: "", musclegroup: "", sets: [SetSwift(reps: 0, weight: 0)]))
-                            }) {
-                                Image(systemName: "plus")
-                            }
-                            Spacer()
                         }
-                    }
-                    
-                    ForEach(0..<exerciseAmount, id: \.self) { index in
-                        if index < self.exercises.count {
-                            self.exerciseView(for: index)
-                        }
-                    }
-                    Button {
-                        showingPopover = true
-                    } label: {
-                        Text("FINISH")
-                            .bold()
-                            .frame(width: 200, height: 40)
-                            .background {
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                    .fill(buttonColor)
+                        
+                        ForEach(0..<exerciseAmount, id: \.self) { index in
+                            if index < self.exercises.count {
+                                self.exerciseView(for: index).padding(.vertical, 20)
                             }
-                            .foregroundColor(.white)
-                    }.padding(.vertical, 30)
-                        .popover(isPresented: $showingPopover) {
-                            ZStack {
-                                backgroundlower
-                                Path { path in
-                                    path.move(to: CGPoint(x: 0, y: 0))
-                                    path.addLine(to: CGPoint(x: 0, y: 300))
-                                    path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
-                                    path.addLine(to: CGPoint(x: 450, y: 0))
-                                }.fill(.white)
-                                VStack {
-                                    Text("Admire your workout in the future:")
-                                        .font(.headline)
-                                    Text("All I need from you is the following..")
-                                        .font(.subheadline)
-                                    HStack {
-                                        Text("Workout name:").padding().bold()
-                                        TextField("name", text: $workoutname).padding().autocorrectionDisabled()
-                                    }
-                                    HStack {
-                                        Text("Workout length:").padding().bold()
-                                        TextField("duration", value: $workoutname, formatter: numberFormatter).padding().autocorrectionDisabled()
-                                    }
-                                    Button {
-                                        //finish
-                                        
-                                    } label: {
-                                        Text("END WORKOUT")
-                                            .bold()
-                                            .frame(width: 200, height: 40)
-                                            .background {
-                                                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                                    .fill(buttonColor)
-                                            }
-                                            .foregroundColor(.white)
+                            Divider()
+                        }
+                        Button {
+                            showingPopover = true
+                            print(exercises)
+                        } label: {
+                            Text("FINISH")
+                                .bold()
+                                .frame(width: 200, height: 40)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                        .fill(buttonColor)
+                                }
+                                .foregroundColor(.white)
+                        }.padding(.vertical, 30)
+                            .popover(isPresented: $showingPopover) {
+                                ZStack {
+                                    backgroundlower
+                                    Path { path in
+                                        path.move(to: CGPoint(x: 0, y: 0))
+                                        path.addLine(to: CGPoint(x: 0, y: 300))
+                                        path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
+                                        path.addLine(to: CGPoint(x: 450, y: 0))
+                                    }.fill(.white)
+                                    VStack {
+                                        Text("Admire your workout in the future:")
+                                            .font(.headline)
+                                        Text("All I need from you is the following..")
+                                            .font(.subheadline)
+                                        HStack {
+                                            Text("Workout name:").padding().bold()
+                                            TextField("name", text: $workoutname).padding().autocorrectionDisabled()
+                                        }
+                                        HStack {
+                                            Text("Workout length:").padding().bold()
+                                            TextField("duration", value: $workoutname, formatter: numberFormatter).padding().autocorrectionDisabled()
+                                        }
+                                        Button {
+                                            //finish
+                                            
+                                        } label: {
+                                            Text("END WORKOUT")
+                                                .bold()
+                                                .frame(width: 200, height: 40)
+                                                .background {
+                                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                                        .fill(buttonColor)
+                                                }
+                                                .foregroundColor(.white)
+                                        }
                                     }
                                 }
+                                .ignoresSafeArea()
                             }
-                            .ignoresSafeArea()
-                        }
-                    Spacer()
-                }.padding(.top, 150).padding(.horizontal, 20)
+                        Spacer()
+                    }.padding(.top, 150).padding(.horizontal, 20)
+                }
                 
             }.ignoresSafeArea()
     }
@@ -123,11 +124,16 @@ struct Temp: View {
             HStack {
                 Text("Exercisename:").bold()
                 TextField("Exercise name", text: self.$exercises[index].name)
+                
             }
             HStack {
-                Text("Amount of sets:").bold()
-                
-                TextField("Amount of sets", value: self.$setAmount, formatter: numberFormatter)
+                Text("Musclegroup").bold()
+                Picker("Muscle:", selection: self.$exercises[index].musclegroup) {
+                    ForEach(muscles, id: \.self) {
+                        Text($0)
+                    }
+                }
+                Spacer()
             }
             ForEach(0..<self.setAmount, id: \.self) { setIndex in
                 if setIndex < self.exercises[index].sets.count {
@@ -147,13 +153,18 @@ struct Temp: View {
                     self.exercises[index].sets[setIndex].reps = value
                 }
             }))
-            TextField("Weight", text: Binding<String>(get: {
-                String(self.exercises[index].sets[setIndex].weight)
-            }, set: {
-                if let value = Int($0) {
-                    self.exercises[index].sets[setIndex].weight = value
-                }
-            }))
+        
+            
+            HStack {
+                TextField("Weight", text: Binding<String>(get: {
+                    String(self.exercises[index].sets[setIndex].weight)
+                }, set: {
+                    if let value = Int($0) {
+                        self.exercises[index].sets[setIndex].weight = value
+                    }
+                }))
+                Text("kg").padding(.trailing, 50)
+            }
         }
     }
 }
