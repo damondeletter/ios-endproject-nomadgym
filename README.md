@@ -66,18 +66,18 @@ The features also changed a lot.
 
 Anyways, here are the initial mockups:
 - First try:
-![image](https://user-images.githubusercontent.com/71697141/210183210-8e79bad7-5407-4b81-ac38-70ff8c64b1a0.png)
+![image](https://user-images.githubusercontent.com/71697141/210183210-8e79bad7-5407-4b81-ac38-70ff8c64b1a0.png =250x250)
 
 - Different colors:
-![image](https://user-images.githubusercontent.com/71697141/210183218-c14f0a67-2bf9-4377-8721-11dd9efb487d.png)
+![image](https://user-images.githubusercontent.com/71697141/210183218-c14f0a67-2bf9-4377-8721-11dd9efb487d.png =250x250)
 
 - Third try:
-![image](https://user-images.githubusercontent.com/71697141/210183221-bba56d8a-a20d-4e21-b34c-0c9e829e61ed.png)
+![image](https://user-images.githubusercontent.com/71697141/210183221-bba56d8a-a20d-4e21-b34c-0c9e829e61ed.png =250x250)
 
 - More details:
-![image](https://user-images.githubusercontent.com/71697141/210183228-69e8a0c8-f4e4-41e4-8f2c-5d3ba654db0c.png)
+![image](https://user-images.githubusercontent.com/71697141/210183228-69e8a0c8-f4e4-41e4-8f2c-5d3ba654db0c.png =250x250)
 
 - Next page:
-![image](https://user-images.githubusercontent.com/71697141/210183232-c41e252a-5b2e-4f62-9f76-8a786e4eafa6.png)
+![image](https://user-images.githubusercontent.com/71697141/210183232-c41e252a-5b2e-4f62-9f76-8a786e4eafa6.png =250x250)
 
 
