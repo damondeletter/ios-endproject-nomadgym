@@ -166,4 +166,5 @@ struct LoginView_Previews: PreviewProvider {
     }
 }
 
-//https://stackoverflow.com/questions/73745850/how-to-draw-a-curve-path-after-straight-lines-in-swiftui
+
+// typewriter effect: https://betterprogramming.pub/typewriter-effect-in-swiftui-ba81db10b570

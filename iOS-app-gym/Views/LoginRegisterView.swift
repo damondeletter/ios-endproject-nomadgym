@@ -63,3 +63,5 @@ struct LoginRegisterView_Previews: PreviewProvider {
         LoginRegisterView()
     }
 }
+
+// typewriter effect: https://betterprogramming.pub/typewriter-effect-in-swiftui-ba81db10b570

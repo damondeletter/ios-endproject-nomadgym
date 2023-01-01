@@ -194,3 +194,5 @@ struct RegisterView_Previews: PreviewProvider {
         RegisterView()
     }
 }
+
+// typewriter effect: https://betterprogramming.pub/typewriter-effect-in-swiftui-ba81db10b570

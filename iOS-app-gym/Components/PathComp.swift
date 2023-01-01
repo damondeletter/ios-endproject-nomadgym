@@ -25,3 +25,5 @@ struct Path_Previews: PreviewProvider {
         Path()
     }
 }
+
+// code used https://stackoverflow.com/questions/73745850/how-to-draw-a-curve-path-after-straight-lines-in-swiftui

@@ -43,15 +43,6 @@ extension View {
     }
 }
 
-extension TabView {
-
-    func myTabViewStyle() -> some View {
-        self.background(LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom))
-            .frame(width: 200, height: 500, alignment: .top)
-            .opacity(0.5)
-
-    }
-}
 
 extension Collection {
     subscript(safe index: Index) -> Element? {
@@ -79,6 +70,5 @@ extension Array: RawRepresentable where Element: Codable {
     }
 }
 
-/* https://www.youtube.com/watch?v=h4vyOz4Tztg */
 /* https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values */
 /* https://stackoverflow.com/questions/63166706/how-to-store-nested-arrays-in-appstorage-for-swiftui */
