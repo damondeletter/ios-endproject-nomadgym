@@ -9,29 +9,24 @@ import SwiftUI
 import Firebase
 
 struct HistoryView: View {
-    let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
+ 
     @State private var selectedTab : Tab = .arrow
     @State private var workouts = [Workout]()
     @ObservedObject var viewModel = ViewModel()
     
     var body: some View {
         ZStack {
-            backgroundlower
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: 300))
-                path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
-                path.addLine(to: CGPoint(x: 450, y: 0))
-            }.fill(.white)
+            Constants.backgroundlower
+            PathComp()
             ScrollView {
             VStack {
              
                 HStack {
-                    Text("Last week's workouts:").font(.title2).bold()
+                    Text("Last 7 workouts:").font(.title2).bold()
                     Spacer()
                 }
                 .padding()
-                        ForEach(workouts.suffix(7), id: \.id) { workout in
+                ForEach(workouts.suffix(7), id: \.id) { workout in
                             NavigationLink(destination: HistoryDetailView(workout: workout)) {
                                 HStack {
                                     Text(workout.name)
@@ -58,7 +53,7 @@ struct HistoryView: View {
                                 Text(workout.name)
                                 Spacer()
                                 Text(workout.workoutdate.prefix(10))
-                                
+                                Image(systemName: "arrow.right")
                             }
                             .padding()
                             .listRowBackground(Color.hexColour(hexValue: 0x77BAFE))
@@ -71,8 +66,7 @@ struct HistoryView: View {
                 Spacer()
             }.task {
                 await viewModel.fetchWorkouts(Auth.auth().currentUser!.uid)
-                workouts = viewModel.workouts
-                
+                workouts = viewModel.workouts.sorted(by: {$0.workoutdate > $1.workoutdate})
             }
             }
         }

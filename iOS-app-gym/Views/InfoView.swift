@@ -9,20 +9,15 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct InfoView: View {
-    let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
+
     @State private var infoblocks = [InfoBlock]()
     @ObservedObject var viewModel = ViewModel()
     let backgroundColor = Color.hexColour(hexValue: 0xa879fb)
     let color = Color.hexColour(hexValue: 0x6715f9)
     var body: some View {
         ZStack{
-            backgroundlower
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: 300))
-                path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
-                path.addLine(to: CGPoint(x: 450, y: 0))
-            }.fill(.white)
+            Constants.backgroundlower
+           Path()
             VStack {
                 VStack {
                     Text("All articles").frame(maxWidth: .greatestFiniteMagnitude, alignment: .leading).padding(.horizontal, 10).foregroundColor(Color.hexColour(hexValue: 0x19213F)).font(.title)
@@ -77,8 +72,6 @@ struct InfoView: View {
             }.task {
                 await viewModel.fetchData()
                 infoblocks = viewModel.items
-                
-                
             }
                 VStack {
                     Text("Coming soon").font(.title)

@@ -15,12 +15,9 @@ struct RegisterView: View {
     @State private var lastName = ""
     @State var text : String = ""
     let welcomeText : String = "Welcome to nomadgym"
-    let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
-    let buttonColor = Color.hexColour(hexValue: 0x6715f9)
     @EnvironmentObject private var authViewModel : AuthViewModel
     @State private var alert = false
     @State private var error = ""
-    
     @State private var writing = false
     @State private var movingCursor = false
     @State private var blinkingCursor = false
@@ -28,17 +25,10 @@ struct RegisterView: View {
     var body: some View {
         if self.alert {
             //todo fix alert
-            
         }
         ZStack {
-            backgroundlower
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: 300))
-                path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
-                path.addLine(to: CGPoint(x: 450, y: 0))
-            }
-            .fill(.white)
+            Constants.backgroundlower
+            PathComp()
             .onAppear {
                 // Writing Animation
                 withAnimation(.easeOut(duration: 2).delay(1).repeatForever(autoreverses: true)) {
@@ -58,14 +48,14 @@ struct RegisterView: View {
                 
                 Text("Welcome").offset(y:-175)
                     .font(.system(size: 40, weight: .bold,design: .rounded))
-                    .foregroundColor(buttonColor)
+                    .foregroundColor(Constants.buttonColor)
                 ZStack(alignment: .leading) {
                     Text("Join our team now")
                     
                         .font(.system(size: 17, weight: .bold,design: .rounded))
                         .mask(Rectangle().offset(x: writing ? 0 : -150))
                         .offset(y:-185)
-                        .foregroundColor(buttonColor)
+                        .foregroundColor(Constants.buttonColor)
                     
                     Rectangle()
                         .fill(.black)
@@ -81,7 +71,7 @@ struct RegisterView: View {
                         .placeholder(when: email.isEmpty) {
                             Text("Email")
                                 .bold()
-                                .foregroundColor(buttonColor)
+                                .foregroundColor(Constants.buttonColor)
                         }
                     Image(systemName: "envelope")
                 }
@@ -98,7 +88,7 @@ struct RegisterView: View {
                         .placeholder(when: firstName.isEmpty) {
                             Text("Firstname")
                                 .bold()
-                                .foregroundColor(buttonColor)
+                                .foregroundColor(Constants.buttonColor)
                         }
                         
                     
@@ -110,7 +100,7 @@ struct RegisterView: View {
                         .placeholder(when: lastName.isEmpty) {
                             Text("LastName")
                                 .bold()
-                                .foregroundColor(buttonColor)
+                                .foregroundColor(Constants.buttonColor)
                         }
                     Image(systemName: "person")
                 }
@@ -128,7 +118,7 @@ struct RegisterView: View {
                         .textFieldStyle(.plain)
                         .placeholder(when: password.isEmpty) {
                             Text("Password").bold()
-                                .foregroundColor(buttonColor)
+                                .foregroundColor(Constants.buttonColor)
                         }
                     Image(systemName: "lock")
                 }
@@ -144,7 +134,7 @@ struct RegisterView: View {
                         .frame(width: 200, height: 40)
                         .background {
                             RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .fill(buttonColor)
+                                .fill(Constants.buttonColor)
                         }
                         .foregroundColor(.white)
                 }
@@ -183,16 +173,16 @@ struct RegisterView: View {
                 self.alert = true
             } else {
                 Auth.auth().signIn(withEmail: self.email, password: self.password)
-                print("signed in")
+                print("SIGNED IN")
                 self.AddUserInformationToFirebase()
                 self.alert = false
                 self.userIsLoggedIn = true
                 
                 guard let uid = Auth.auth().currentUser?.uid else {return}
                 let name = self.firstName + " " + self.lastName
-                print("Name is: \(name), uid is: \(uid), email is: \(self.email)")
+                
                 authViewModel.postCredentials(uid, name, self.email)
-                print("GELUKT, hier ben ik")
+                
             }
         }
         

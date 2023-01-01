@@ -13,7 +13,6 @@ struct LoginRegisterView: View {
     @State private var userIsLoggedIn = false
     @State var LoginPicked = true
     
-    let buttonColor = Color.hexColour(hexValue: 0x6715f9)
     var body: some View {
         if userIsLoggedIn {
             OverviewView()
@@ -25,7 +24,7 @@ struct LoginRegisterView: View {
                         LoginPicked = true
                     } label: {
                         Text("Login")
-                            .foregroundColor(buttonColor)
+                            .foregroundColor(Constants.buttonColor)
                         
                     }.offset(x:-70, y: 355)
                     
@@ -33,7 +32,7 @@ struct LoginRegisterView: View {
                         LoginPicked = false
                     } label: {
                         Text("Sign up")
-                            .foregroundColor(buttonColor)
+                            .foregroundColor(Constants.buttonColor)
                     }.offset(x:70, y: 355)
                 }.frame(height: 1)
                 

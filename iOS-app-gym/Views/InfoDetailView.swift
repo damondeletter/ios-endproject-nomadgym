@@ -9,19 +9,11 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct InfoDetailView: View {
-    
     let infoblock : InfoBlock
-    let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
     var body: some View {
         ZStack {
-            backgroundlower
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: 300))
-                path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
-                path.addLine(to: CGPoint(x: 450, y: 0))
-            }
-            .fill(.white)
+            Constants.backgroundlower
+            PathComp()
             ScrollView {
                 VStack {
                     WebImage(url: URL(string: infoblock.image))

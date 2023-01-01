@@ -29,7 +29,7 @@ class ViewModel : ObservableObject {
                 
             }
         } catch {
-            print("OOPS FOUTJE")
+            print("An error has occured in fetching the blogposts")
         }
     }
     
@@ -45,10 +45,10 @@ class ViewModel : ObservableObject {
             
             if let decodedResponse = try? JSONDecoder().decode([Workout].self, from: data) {
                 workouts = decodedResponse
-                print(workouts)
+                
             }
         } catch {
-            print("OOPS FOUTJE")
+            print("An error has occured in fetching the workouts")
         }
     }
 }

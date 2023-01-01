@@ -9,16 +9,11 @@ import SwiftUI
 
 struct HistoryDetailView: View {
     let workout : Workout
-    let backgroundlower = LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom)
+   
     var body: some View {
         ZStack {
-            backgroundlower
-            Path { path in
-                path.move(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: 0, y: 300))
-                path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
-                path.addLine(to: CGPoint(x: 450, y: 0))
-            }.fill(.white)
+            Constants.backgroundlower
+            Path()
             ScrollView {
                 
                 VStack {
@@ -32,9 +27,9 @@ struct HistoryDetailView: View {
                         ForEach(workout.exercises, id: \.id) { exercise in
                             if(exercise.name != "" || exercise.musclegroup != "") {
                                 VStack{
-                                    Text(exercise.name).bold()
+                                    Text(exercise.name).font(.title2).bold()
                                     
-                                    Text("Muscle group trained: \(exercise.musclegroup.uppercased())")
+                                    Text(exercise.musclegroup.uppercased())
                                     
                                 }.padding()
                                 VStack {
