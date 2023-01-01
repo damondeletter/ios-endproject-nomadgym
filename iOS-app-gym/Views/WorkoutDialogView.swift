@@ -183,7 +183,7 @@ struct WorkoutDialogView: View {
                         self.exercises[index].sets[setIndex].weight = value
                     }
                 }))
-                Text("kg").padding(.trailing, 50)
+                Text("kg").padding(.trailing, 45)
             }
         }
     }
