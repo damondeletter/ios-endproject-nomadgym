@@ -35,7 +35,6 @@ struct RegisterView: View {
                     writing.toggle()
                     movingCursor.toggle()
                 }
-                
                 // Cursor Blinking Animation
                 withAnimation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
                     
@@ -44,14 +43,11 @@ struct RegisterView: View {
             }
             
             VStack(spacing: 20) {
-                
-                
                 Text("Welcome").offset(y:-175)
                     .font(.system(size: 40, weight: .bold,design: .rounded))
                     .foregroundColor(Constants.buttonColor)
                 ZStack(alignment: .leading) {
                     Text("Join our team now")
-                    
                         .font(.system(size: 17, weight: .bold,design: .rounded))
                         .mask(Rectangle().offset(x: writing ? 0 : -150))
                         .offset(y:-185)
@@ -78,9 +74,6 @@ struct RegisterView: View {
                 
                 Rectangle()
                     .frame(width: 350, height: 1)
-                
-                
-                
                 HStack{
                     TextField("",text: $firstName)
                         .textFieldStyle(.plain).frame(width: 90)
@@ -90,8 +83,6 @@ struct RegisterView: View {
                                 .bold()
                                 .foregroundColor(Constants.buttonColor)
                         }
-                        
-                    
                     Divider().frame(height: 20)
                     
                         TextField("",text: $lastName)
@@ -110,7 +101,6 @@ struct RegisterView: View {
                     Rectangle()
                         .frame(width: 240, height: 1)
                 }
-                
                 
                 HStack{
                     SecureField("", text: $password)
@@ -144,7 +134,6 @@ struct RegisterView: View {
                 .keyboardShortcut(.defaultAction).onSubmit {
                     register()
                 }
-                
             }
             .frame(width: 350)
             .onAppear {
@@ -155,16 +144,12 @@ struct RegisterView: View {
                 }
             }
             Spacer()
-            
-            
         }.ignoresSafeArea()
             .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
                 TabBarView()
             }
     }
 
-
-    
     func register() {
         print("User creating.....")
         Auth.auth().createUser(withEmail: email, password: password){ result, error in
@@ -172,7 +157,7 @@ struct RegisterView: View {
                 self.error = error!.localizedDescription
                 self.alert = true
             } else {
-                Auth.auth().signIn(withEmail: self.email, password: self.password)
+               
                 print("SIGNED IN")
                 self.AddUserInformationToFirebase()
                 self.alert = false
@@ -180,9 +165,9 @@ struct RegisterView: View {
                 
                 guard let uid = Auth.auth().currentUser?.uid else {return}
                 let name = self.firstName + " " + self.lastName
-                
+               
                 authViewModel.postCredentials(uid, name, self.email)
-                
+                Auth.auth().signIn(withEmail: self.email, password: self.password)
             }
         }
         

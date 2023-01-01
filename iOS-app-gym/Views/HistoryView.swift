@@ -9,11 +9,9 @@ import SwiftUI
 import Firebase
 
 struct HistoryView: View {
- 
     @State private var selectedTab : Tab = .arrow
     @State private var workouts = [Workout]()
     @ObservedObject var viewModel = ViewModel()
-    
     var body: some View {
         ZStack {
             Constants.backgroundlower

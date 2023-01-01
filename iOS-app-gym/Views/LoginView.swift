@@ -13,26 +13,16 @@ struct LoginView: View {
     @State private var password = ""
     @State var text : String = ""
     let welcomeText : String = "Welcome to nomadgym"
-
     @State private var selectedTab : Tab = .house
     @State private var writing = false
     @State private var movingCursor = false
     @State private var blinkingCursor = false
     @State private var userIsLoggedIn = false
-    
     @State private var alert = false
     @State private var error = ""
-
-    
     @FocusState private var focusedField : Bool
     
-    
     var body: some View {
-        if self.alert {
-            //todo fix alert
-        }
-        
-        
         ZStack {
             Constants.backgroundlower
            Path()
@@ -42,17 +32,13 @@ struct LoginView: View {
                     writing.toggle()
                     movingCursor.toggle()
                 }
-                
                 // Cursor Blinking Animation
                 withAnimation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
                     
                     blinkingCursor.toggle()
                 }
             }
-            
             VStack(spacing: 20) {
-                
-                
                 Text("Welcome back").offset(y:-175)
                     .font(.system(size: 40, weight: .bold,design: .rounded))
                     .foregroundColor(Constants.buttonColor)
@@ -122,8 +108,6 @@ struct LoginView: View {
                     login()
                     selectedTab = .house
                 }
-                
-                
             }
             .frame(width: 350)
             .onAppear {
@@ -134,8 +118,6 @@ struct LoginView: View {
                 }
             }
             Spacer()
-            
-            
         }.ignoresSafeArea()
             .fullScreenCover(isPresented: $userIsLoggedIn, onDismiss: nil) {
                 TabBarView()
@@ -143,7 +125,6 @@ struct LoginView: View {
             .onAppear {
                 focusedField = true
             }
-        
     }
     
     func login () {
@@ -151,17 +132,16 @@ struct LoginView: View {
             
             
             if error != nil {
-                let errormessages = ["user-not-found": "Please enter valid credentials","network-request-failed": "There is a network error, please try again later", "auth/wrong-password": "Email and password are not valid. Also,they cannot be empty"]
+               
                 print(error!.localizedDescription)
                 if error!.localizedDescription == "There is no user record corresponding to this identifier. The user may have been deleted." {
-                    self.error = errormessages["user-not-found"]!
+                    self.error = Constants.errormessages["user-not-found"]!
                 } else if(error!.localizedDescription == "A network error (such as timeout, interrupted connection or unreachable host) has occurred."){
-                    self.error = errormessages["network-request-failed"]!
+                    self.error = Constants.errormessages["network-request-failed"]!
                     
                 } else if(error!.localizedDescription == "The password is invalid or the user does not have a password.") {
-                    self.error = errormessages["auth/wrong-password"]!
+                    self.error = Constants.errormessages["auth/wrong-password"]!
                 }
-                
                 else {
                     self.error = error!.localizedDescription
                 }
@@ -172,8 +152,6 @@ struct LoginView: View {
                 }
             } else {
                 userIsLoggedIn = true
-                
-                
             }
         }
 

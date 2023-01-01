@@ -33,21 +33,20 @@ struct InfoDetailView: View {
                         
                     }
                     VStack(alignment: .leading) {
-                        Text(infoblock.paragraph1).font(.body)
+                        Text(infoblock.paragraph1).font(.body).padding(.bottom, 10)
                         Spacer()
-                        Text(infoblock.paragraph2).font(.body)
+                        Text(infoblock.paragraph2).font(.body).padding(.bottom, 10)
                         Spacer()
-                        Text(infoblock.paragraph3).font(.body)
+                        Text(infoblock.paragraph3).font(.body).padding(.bottom, 10)
                         Spacer()
-                        Text(infoblock.paragraph4).font(.body)
+                        Text(infoblock.paragraph4).font(.body).padding(.bottom, 10)
                         Spacer()
                         
                     }
                     .padding(.horizontal,5)
                     
                     VStack {
-                        Text("Read more about this on: ")
-                        Link("Learn more about bulking", destination: URL(string: infoblock.link)!)
+                        Link("Read more about this", destination: URL(string: infoblock.link)!)
                     }
                     
                     HStack {

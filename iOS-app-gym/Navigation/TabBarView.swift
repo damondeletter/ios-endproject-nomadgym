@@ -54,7 +54,7 @@ struct TabBarView: View {
             .frame(width: nil, height:60)
             .background(.thinMaterial)
             .cornerRadius(10).padding(.horizontal, 10).padding(.vertical,2)
-        }.background(LinearGradient(gradient: Gradient(colors: [.white,Color.hexColour(hexValue: 0xF3F4FA),Color.hexColour(hexValue: 0xbb94fe)]), startPoint: .top, endPoint: .bottom))
+        }.background(Constants.backgroundlower)
        
     }
     

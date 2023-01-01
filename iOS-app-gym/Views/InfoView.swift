@@ -9,10 +9,8 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct InfoView: View {
-
     @State private var infoblocks = [InfoBlock]()
     @ObservedObject var viewModel = ViewModel()
-    let backgroundColor = Color.hexColour(hexValue: 0xa879fb)
     let color = Color.hexColour(hexValue: 0x6715f9)
     var body: some View {
         ZStack{

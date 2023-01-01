@@ -14,13 +14,7 @@ struct WorkoutDialogView: View {
     @AppStorage("workoutDuration") private var workoutDuration : Int = 0
     @State private var showingPopover = false
     @State private var setAmount: Int = 4
-    var muscles = ["Choose a muscle", "Chest", "Shoulders", "Rear delts", "Biceps", "Triceps", "Glutes", "Quads", "Hamstrings", "Calves", "Abs", "Back","Forearms"]
-    let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .none
-        formatter.zeroSymbol  = ""
-        return formatter
-    }()
+    @State private var alert = false
     
     @ObservedObject var workoutviewModel = WorkoutExerciseViewModel()
     @ObservedObject var authviewModel = AuthViewModel()
@@ -62,7 +56,9 @@ struct WorkoutDialogView: View {
                             }
                         
                         Button {
+                        
                             showingPopover = true
+                         
                             
                         } label: {
                             Text("FINISH")
@@ -89,12 +85,17 @@ struct WorkoutDialogView: View {
                                         }
                                         HStack {
                                             Text("Workout length:").padding().bold()
-                                            TextField("duration", value: $workoutDuration, formatter: numberFormatter).padding().autocorrectionDisabled()
+                                            TextField("duration", value: $workoutDuration, formatter: Constants.numberFormatter).padding().autocorrectionDisabled()
                                         }
                                         
                                             Button {
                                                 //finish
-                                                finishWorkout()
+                                                if(workoutname != "" && workoutDuration != 0) {
+                                                    finishWorkout()
+                                                }
+                                                else {
+                                                    alert = true
+                                                }
                                             } label: {
                                                 Text("END WORKOUT")
                                                     .bold()
@@ -104,7 +105,7 @@ struct WorkoutDialogView: View {
                                                             .fill(Constants.buttonColor)
                                                     }
                                                     .foregroundColor(.white)
-                                            }
+                                            }.alert("Name and/or duration cannot be empty", isPresented: $alert, actions: {})
                                         
                                     }
                                 }
@@ -124,10 +125,7 @@ struct WorkoutDialogView: View {
 
     private func finishWorkout() {
         workoutviewModel.postWorkout(name: workoutname, totalTime: workoutDuration, hasStarted: 1, workoutDate: getCurrentDate(), userUid: Auth.auth().currentUser!.uid, exercises: exercises)
-        
         exerciseAmount = 0
-        
-        
         workoutname = ""
         workoutDuration = 0
         
@@ -150,7 +148,7 @@ struct WorkoutDialogView: View {
             HStack {
                 Text("Musclegroup").bold()
                 Picker("Muscle:", selection: self.$exercises[index].musclegroup) {
-                    ForEach(muscles, id: \.self) {
+                    ForEach(Constants.muscles, id: \.self) {
                         Text($0)
                     }
                 }.frame(width: 200)
