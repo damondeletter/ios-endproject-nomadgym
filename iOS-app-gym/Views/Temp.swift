@@ -53,7 +53,7 @@ struct Temp: View {
                                 Image(systemName: "\(exerciseAmount).circle").frame(width: 50, height: 50).font(.title)
                                 Button(action: {
                                     self.exerciseAmount += 1
-                                    self.exercises.append(ExerciseSwift(name: "", musclegroup: "", sets: [SetSwift(reps: 0, weight: 0)]))
+                                    self.exercises.append(ExerciseSwift(name: "", musclegroup: "", sets: [SetSwift(reps: 0, weight: 0),SetSwift(reps: 0, weight: 0),SetSwift(reps: 0, weight: 0),SetSwift(reps: 0, weight: 0)]))
                                 }) {
                                     Image(systemName: "plus")
                                 }
@@ -103,19 +103,21 @@ struct Temp: View {
                                             Text("Workout length:").padding().bold()
                                             TextField("duration", value: $workoutDuration, formatter: numberFormatter).padding().autocorrectionDisabled()
                                         }
-                                        Button {
-                                            //finish
-                                            finishWorkout()
-                                        } label: {
-                                            Text("END WORKOUT")
-                                                .bold()
-                                                .frame(width: 200, height: 40)
-                                                .background {
-                                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                                        .fill(buttonColor)
-                                                }
-                                                .foregroundColor(.white)
-                                        }
+                                        
+                                            Button {
+                                                //finish
+                                                finishWorkout()
+                                            } label: {
+                                                Text("END WORKOUT")
+                                                    .bold()
+                                                    .frame(width: 200, height: 40)
+                                                    .background {
+                                                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                                            .fill(buttonColor)
+                                                    }
+                                                    .foregroundColor(.white)
+                                            }
+                                        
                                     }
                                 }
                                 .ignoresSafeArea()
@@ -140,6 +142,7 @@ struct Temp: View {
         
         workoutname = ""
         workoutDuration = 0
+        
     }
     private func getCurrentDate() -> String {
         let date = Date()
@@ -176,7 +179,7 @@ struct Temp: View {
     private func setView(for index: Int, setIndex: Int) -> some View {
         
         HStack {
-            Text("Set \(index + 1):").bold()
+            Text("Set \(setIndex + 1):").bold()
             TextField("Reps", text: Binding<String>(get: {
                 String(self.exercises[index].sets[setIndex].reps)
             }, set: {

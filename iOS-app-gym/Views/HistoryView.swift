@@ -23,6 +23,7 @@ struct HistoryView: View {
                 path.addCurve(to: CGPoint(x: 430, y: 200), control1: CGPoint(x: 175, y: 350), control2: CGPoint(x: 250, y: 80))
                 path.addLine(to: CGPoint(x: 450, y: 0))
             }.fill(.white)
+            ScrollView {
             VStack {
              
                 HStack {
@@ -72,7 +73,7 @@ struct HistoryView: View {
                 await viewModel.fetchWorkouts(Auth.auth().currentUser!.uid)
                 workouts = viewModel.workouts
                 
-                
+            }
             }
         }
     }
