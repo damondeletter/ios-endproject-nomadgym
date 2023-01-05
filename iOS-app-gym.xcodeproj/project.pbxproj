@@ -27,7 +27,8 @@
 		82A8B61529559E9900AAFD43 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8B61429559E9900AAFD43 /* Workout.swift */; };
 		82A8B61729559FB400AAFD43 /* HorizontalListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8B61629559FB400AAFD43 /* HorizontalListItem.swift */; };
 		82A8B6192955A44000AAFD43 /* VerticalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8B6182955A44000AAFD43 /* VerticalCard.swift */; };
-		82A8B61B2955E92700AAFD43 /* WorkoutDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8B61A2955E92700AAFD43 /* WorkoutDialogView.swift */; };
+		82AB058D2961EFE900D4F9D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB058C2961EFE900D4F9D5 /* Constants.swift */; };
+		82AB058F2961F02E00D4F9D5 /* PathComp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AB058E2961F02E00D4F9D5 /* PathComp.swift */; };
 		82C147D92954495E00050B8C /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147D82954495E00050B8C /* InfoView.swift */; };
 		82C147DB295449AA00050B8C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DA295449AA00050B8C /* HistoryView.swift */; };
 		82C147DD29548CB500050B8C /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C147DC29548CB500050B8C /* ViewModel.swift */; };
@@ -45,9 +46,8 @@
 		82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB7E294F6F6600B25CC2 /* LoginView.swift */; };
 		82C7BB81294F73A000B25CC2 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BB80294F73A000B25CC2 /* RegisterView.swift */; };
 		82CC96A72958DAE900463316 /* WorkoutExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC96A62958DAE900463316 /* WorkoutExerciseViewModel.swift */; };
-		82CC96A92958E3CC00463316 /* Temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC96A82958E3CC00463316 /* Temp.swift */; };
+		82CC96A92958E3CC00463316 /* WorkoutDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC96A82958E3CC00463316 /* WorkoutDialogView.swift */; };
 		82CDC54829506DF4009FAB28 /* ExploreHorizontalCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54729506DF4009FAB28 /* ExploreHorizontalCard.swift */; };
-		82CDC54A29506E5D009FAB28 /* InfoSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54929506E5D009FAB28 /* InfoSegment.swift */; };
 		82CDC54D29506E76009FAB28 /* InfoBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54C29506E76009FAB28 /* InfoBlock.swift */; };
 		82CDC54F29506F23009FAB28 /* InfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC54E29506F23009FAB28 /* InfoItem.swift */; };
 		82CDC55229507398009FAB28 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CDC55129507398009FAB28 /* TabBarView.swift */; };
@@ -71,7 +71,8 @@
 		82A8B61429559E9900AAFD43 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		82A8B61629559FB400AAFD43 /* HorizontalListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalListItem.swift; sourceTree = "<group>"; };
 		82A8B6182955A44000AAFD43 /* VerticalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalCard.swift; sourceTree = "<group>"; };
-		82A8B61A2955E92700AAFD43 /* WorkoutDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDialogView.swift; sourceTree = "<group>"; };
+		82AB058C2961EFE900D4F9D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		82AB058E2961F02E00D4F9D5 /* PathComp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathComp.swift; sourceTree = "<group>"; };
 		82C147D82954495E00050B8C /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		82C147DA295449AA00050B8C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		82C147DC29548CB500050B8C /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -89,9 +90,8 @@
 		82C7BB7E294F6F6600B25CC2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82C7BB80294F73A000B25CC2 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		82CC96A62958DAE900463316 /* WorkoutExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutExerciseViewModel.swift; sourceTree = "<group>"; };
-		82CC96A82958E3CC00463316 /* Temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temp.swift; sourceTree = "<group>"; };
+		82CC96A82958E3CC00463316 /* WorkoutDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDialogView.swift; sourceTree = "<group>"; };
 		82CDC54729506DF4009FAB28 /* ExploreHorizontalCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreHorizontalCard.swift; sourceTree = "<group>"; };
-		82CDC54929506E5D009FAB28 /* InfoSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSegment.swift; sourceTree = "<group>"; };
 		82CDC54C29506E76009FAB28 /* InfoBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBlock.swift; sourceTree = "<group>"; };
 		82CDC54E29506F23009FAB28 /* InfoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoItem.swift; sourceTree = "<group>"; };
 		82CDC55129507398009FAB28 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -131,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				82862D652953056D0013275F /* DataManager.swift */,
-				82862D6929530F970013275F /* AuthViewModel.swift */,
 				82862D76295335740013275F /* UserService.swift */,
 			);
 			path = Firebase;
@@ -163,7 +162,7 @@
 				82CDC54B29506E6A009FAB28 /* Models */,
 				82CDC54629506D45009FAB28 /* Components */,
 				82CDC54529506D3B009FAB28 /* Views */,
-				82C7BB6E294F2A7800B25CC2 /* Extensions */,
+				82C7BB6E294F2A7800B25CC2 /* Extra */,
 				82C7BB60294F267100B25CC2 /* iOS_app_gymApp.swift */,
 				82C7BB62294F267100B25CC2 /* ContentView.swift */,
 				82C7BB64294F267200B25CC2 /* Assets.xcassets */,
@@ -181,13 +180,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		82C7BB6E294F2A7800B25CC2 /* Extensions */ = {
+		82C7BB6E294F2A7800B25CC2 /* Extra */ = {
 			isa = PBXGroup;
 			children = (
 				82CDC54229505E75009FAB28 /* Addons */,
 				82C7BB6F294F2A8F00B25CC2 /* Extensions.swift */,
+				82AB058C2961EFE900D4F9D5 /* Constants.swift */,
 			);
-			path = Extensions;
+			path = Extra;
 			sourceTree = "<group>";
 		};
 		82CDC54229505E75009FAB28 /* Addons */ = {
@@ -212,9 +212,8 @@
 				82C147D82954495E00050B8C /* InfoView.swift */,
 				82C147DA295449AA00050B8C /* HistoryView.swift */,
 				82C147DE2954B6A000050B8C /* InfoDetailView.swift */,
-				82A8B61A2955E92700AAFD43 /* WorkoutDialogView.swift */,
 				82D8CFEC295752460082FFB6 /* HistoryDetailView.swift */,
-				82CC96A82958E3CC00463316 /* Temp.swift */,
+				82CC96A82958E3CC00463316 /* WorkoutDialogView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,10 +222,10 @@
 			isa = PBXGroup;
 			children = (
 				82CDC54729506DF4009FAB28 /* ExploreHorizontalCard.swift */,
-				82CDC54929506E5D009FAB28 /* InfoSegment.swift */,
 				82CDC54E29506F23009FAB28 /* InfoItem.swift */,
 				82A8B61629559FB400AAFD43 /* HorizontalListItem.swift */,
 				82A8B6182955A44000AAFD43 /* VerticalCard.swift */,
+				82AB058E2961F02E00D4F9D5 /* PathComp.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -272,6 +271,7 @@
 		82D8CFF42958AD930082FFB6 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				82862D6929530F970013275F /* AuthViewModel.swift */,
 				82C147DC29548CB500050B8C /* ViewModel.swift */,
 				82CC96A62958DAE900463316 /* WorkoutExerciseViewModel.swift */,
 			);
@@ -373,7 +373,7 @@
 				82CDC54829506DF4009FAB28 /* ExploreHorizontalCard.swift in Sources */,
 				82C147DD29548CB500050B8C /* ViewModel.swift in Sources */,
 				82C7BB7F294F6F6600B25CC2 /* LoginView.swift in Sources */,
-				82CC96A92958E3CC00463316 /* Temp.swift in Sources */,
+				82CC96A92958E3CC00463316 /* WorkoutDialogView.swift in Sources */,
 				82862D662953056D0013275F /* DataManager.swift in Sources */,
 				82D8CFF32958AD290082FFB6 /* Set.swift in Sources */,
 				82D8CFED295752460082FFB6 /* HistoryDetailView.swift in Sources */,
@@ -384,7 +384,6 @@
 				82C7BB61294F267100B25CC2 /* iOS_app_gymApp.swift in Sources */,
 				82C147DF2954B6A000050B8C /* InfoDetailView.swift in Sources */,
 				82A8B61529559E9900AAFD43 /* Workout.swift in Sources */,
-				82CDC54A29506E5D009FAB28 /* InfoSegment.swift in Sources */,
 				82D8CFF12958AD100082FFB6 /* Exercise.swift in Sources */,
 				82862D68295305950013275F /* User.swift in Sources */,
 				82CDC54D29506E76009FAB28 /* InfoBlock.swift in Sources */,
@@ -394,13 +393,14 @@
 				82862D6C295313EC0013275F /* ImageSelectorController.swift in Sources */,
 				82862D77295335740013275F /* UserService.swift in Sources */,
 				82C7BB79294F56E400B25CC2 /* OverviewView.swift in Sources */,
-				82A8B61B2955E92700AAFD43 /* WorkoutDialogView.swift in Sources */,
 				82862D6A29530F970013275F /* AuthViewModel.swift in Sources */,
+				82AB058F2961F02E00D4F9D5 /* PathComp.swift in Sources */,
 				82A8B61729559FB400AAFD43 /* HorizontalListItem.swift in Sources */,
 				82862D63295300C50013275F /* UserView.swift in Sources */,
 				82CDC55229507398009FAB28 /* TabBarView.swift in Sources */,
 				82CC96A72958DAE900463316 /* WorkoutExerciseViewModel.swift in Sources */,
 				82C7BB7B294F599C00B25CC2 /* LoginRegisterView.swift in Sources */,
+				82AB058D2961EFE900D4F9D5 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,8 +536,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -565,8 +565,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

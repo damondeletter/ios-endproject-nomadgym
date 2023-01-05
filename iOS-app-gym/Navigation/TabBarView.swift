@@ -23,27 +23,27 @@ struct TabBarView: View {
             ZStack {
                 switch selectedTab.rawValue {
                 case "plus.app.fill":
-                    NavigationView {
+                    NavigationStack {
                         WorkoutView()
                     }.navigationBarTitle("Workout", displayMode: .inline)
                 case "house":
-                    NavigationView {
+                    NavigationStack {
                         OverviewView()
                     }.navigationBarTitle("Home", displayMode: .inline)
                 case "person":
-                    NavigationView {
+                    NavigationStack {
                         UserView()
                     }.navigationBarTitle("User info", displayMode: .inline)
                 case "newspaper":
-                    NavigationView {
+                    NavigationStack {
                         InfoView()
                     }.navigationBarTitle("Info blogs", displayMode: .inline)
                 case "arrow.counterclockwise.circle":
-                    NavigationView {
+                    NavigationStack {
                         HistoryView()
                     }.navigationBarTitle("History", displayMode: .inline)
                 default:
-                    NavigationView {
+                    NavigationStack {
                         OverviewView()
                     }.navigationBarTitle("Home", displayMode: .inline)
                 }
