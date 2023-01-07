@@ -1,5 +1,5 @@
 
-# Project Title
+# NomadGym
 
 This repository contains my project for the course: mobile development - iOS.
 
